@@ -14,10 +14,13 @@ namespace RNCCI.Dados
         //lista
         List<UnidadeClinica> unidades = new List<UnidadeClinica>();
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public UnidadesClinicas()
         {
-            unidades.Add(new UnidadeClinica(Distrito.Beja) { Nome = "Sorriso", Distrito = Distrito.Beja });
-            unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida", Distrito = Distrito.Braga });
+            unidades.Add(new UnidadeClinica(Distrito.Beja) { Nome = "Sorriso" });
+            unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida" });
         }
 
         /// <summary>

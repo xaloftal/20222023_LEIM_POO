@@ -59,7 +59,6 @@ namespace RNCCI.Modelos
 
                 default:
                     throw new DadoNaoPrevistoException("RNCCI.Modelos.UnidadeClinica.UnidadeClinica");
-                    break;
             }
         }
 
@@ -89,13 +88,5 @@ namespace RNCCI.Modelos
         /// </summary>
         public Distrito Distrito { get; set; }
 
-        //public Regiao DefinirRegiao(Distrito distrito)
-        //{
-        //    if (distrito.Equals(Distrito.VianaDoCastelo) || distrito.Equals(Distrito.Braga) ||
-        //        distrito.Equals(Distrito.Porto) || distrito.Equals(Distrito.VilaReal) ||
-        //        distrito.Equals(Distrito.Braganca))
-        //        this.
-
-        //}
     }
 }
