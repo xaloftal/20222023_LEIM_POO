@@ -12,5 +12,11 @@ namespace RNCCI.Modelos
         /// código de identificação do profissional
         /// </summary>
         public int CodigoMedico { get; set; }
+
+
+        /// <summary>
+        /// Especialidade do médico
+        /// </summary>
+        public string Especialidade { get; set; }
     }
 }
