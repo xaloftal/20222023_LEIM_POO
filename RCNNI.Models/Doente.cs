@@ -17,5 +17,6 @@ namespace RNCCI.Modelos
         /// Lista de pessoas autorizadas a visita
         /// </summary>
         public List<Visitante> VisitantesAutorizados { get; set; }
+
     }
 }
