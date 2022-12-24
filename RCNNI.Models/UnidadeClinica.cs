@@ -78,15 +78,18 @@ namespace RNCCI.Modelos
         /// </summary>
         public string Nome { get; set; }
 
-        /// <summary>
-        /// regiao da unidade clinica
-        /// </summary>
-        public Regiao Regiao { get; private set; }
+        ///// <summary>
+        ///// regiao da unidade clinica
+        ///// </summary>
+        //public Regiao Regiao { get; private set; }
 
-        /// <summary>
-        /// distrito da unidade clinica
-        /// </summary>
-        public Distrito Distrito { get; set; }
+        ///// <summary>
+        ///// distrito da unidade clinica
+        ///// </summary>
+        //public Distrito Distrito { get; set; }
 
+        public Morada Morada { get; set; }
+
+        public Regiao Regiao { get; set; }
     }
 }

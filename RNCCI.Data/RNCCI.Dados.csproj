@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RCNNI.Models\RNCCI.Modelos.csproj" />
     <ProjectReference Include="..\RNCCI.Enums\RNCCI.Enums.csproj" />
     <ProjectReference Include="..\RNCCI.Exceptions\RNCCI.Excecoes.csproj" />

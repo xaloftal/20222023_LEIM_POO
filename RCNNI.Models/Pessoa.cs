@@ -27,8 +27,5 @@ namespace RNCCI.Modelos
         /// email da pessoa
         /// </summary>
         public string Email { get; set; }
-              
-
-
     }
 }
