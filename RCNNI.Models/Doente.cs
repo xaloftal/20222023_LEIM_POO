@@ -18,5 +18,10 @@ namespace RNCCI.Modelos
         /// </summary>
         public List<Visitante> VisitantesAutorizados { get; set; }
 
+        /// <summary>
+        /// Morada do doente
+        /// </summary>
+        public Morada Morada { get; set; }
+
     }
 }

@@ -17,11 +17,11 @@ namespace RNCCI.Dados
         /// <summary>
         /// constructor
         /// </summary>
-        public UnidadesClinicas()
-        {
-            unidades.Add(new UnidadeClinica(Distrito.Beja) { Nome = "Sorriso" });
-            unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida" });
-        }
+        //public UnidadesClinicas()
+        //{
+        //    unidades.Add(new UnidadeClinica(Distrito.Beja) { Nome = "Sorriso" });
+        //    unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida" });
+        //}
 
         /// <summary>
         /// usar este metodo para a insersao de novas clinicas

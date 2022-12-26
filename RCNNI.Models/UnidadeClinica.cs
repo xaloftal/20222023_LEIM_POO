@@ -18,55 +18,14 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <param name="nome">nome da clinica</param>
         /// <param name="distrito">distrito da clinica</param>
-        public UnidadeClinica(Distrito distrito)
-        {
-            this.NumeroClinica = ++numeroClinica;
+        public UnidadeClinica() => this.NumeroClinica = ++numeroClinica;
 
-            switch (distrito)
-            {
-                case Distrito.VianaDoCastelo:
-                case Distrito.Braga:
-                case Distrito.Porto:
-                case Distrito.VilaReal:
-                case Distrito.Braganca:
-                    this.Regiao = Regiao.Norte;
-                    break;
-
-                case Distrito.CasteloBranco:                    
-                case Distrito.Guarda:                   
-                case Distrito.Aveiro:                  
-                case Distrito.Viseu:
-                case Distrito.Leiria:                      
-                case Distrito.Coimbra:
-                    this.Regiao = Regiao.Centro;
-                    break;
-
-                case Distrito.Faro:
-                    this.Regiao = Regiao.Algarve;
-                    break;
-                
-                case Distrito.Lisboa:
-                case Distrito.Santarem:
-                case Distrito.Setubal:
-                    this.Regiao = Regiao.LisboaEValeDoTejo;
-                    break;                     
-                
-                case Distrito.Beja:
-                case Distrito.Evora:
-                case Distrito.Portalegre:
-                    this.Regiao = Regiao.Alentejo;
-                    break;
-
-                default:
-                    throw new DadoNaoPrevistoException("RNCCI.Modelos.UnidadeClinica.UnidadeClinica");
-            }
-        }
 
 
         /// <summary>
         /// camas da unidade
         /// </summary>
-        public int[] Cama { get; set; }
+        public Cama[] Cama { get; set; }
 
         /// <summary>
         /// numero de identificacao da clinica

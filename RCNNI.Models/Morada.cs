@@ -12,16 +12,74 @@ namespace RNCCI.Modelos
 {
     public class Morada
     {
+        //variaveis
+        
+        /// <summary>
+        /// construtor
+        /// </summary>
+        /// <param name="codigoPostal">codigo postal</param>
+        /// <param name="distrito">distrito</param>
+        public Morada(string codigoPostal, Distrito distrito)
+        {
+            bool valido = CodigoPostalValido(codigoPostal);
+
+            if (valido)
+            {
+                this.CodigoPostal = codigoPostal;
+                this.Coordenadas = ObterCoordenadas(codigoPostal);
+            }
+            else
+                throw new CodigoPostalInvalidoException("RNCCI.Modelos.Morada.Morada");            
+            
+            this.Distrito = distrito;
+            this.Regiao = DeterminaRegiao(distrito);
+        }
+
+        //propriedades
+        /// <summary>
+        /// Rua
+        /// </summary>
         public string Rua { get; set; }
+
+        /// <summary>
+        /// Numero da porta
+        /// </summary>
+        public int NumeroPorta { get; set; }
+
+        /// <summary>
+        /// Cidade
+        /// </summary>
+        public string Cidade { get; set; }
+
+        /// <summary>
+        /// Distrito
+        /// </summary>
+        public Distrito Distrito { get; set; }
+
+        /// <summary>
+        /// codigo postal
+        /// </summary>
         public string CodigoPostal { get; set; }
 
+        /// <summary>
+        /// Regiao
+        /// </summary>
+        public Regiao Regiao { get; private set;}
 
+        /// <summary>
+        /// coordenadas
+        /// </summary>
+        public double[] Coordenadas { get; private set; }
+        
+
+
+        //metodos
         /// <summary>
         /// método para obter as coordenadas apartir do código postal
         /// </summary>
         /// <param name="codigoPostal">código postal</param>
         /// <returns>coordenadas</returns>
-        public static double[] ObterCoordenadas(string codigoPostal)
+        public double[] ObterCoordenadas(string codigoPostal)
         {
             ////cria o cliente
             //var cliente = new RestClient("htps://nominatim.openstreetmap.org");
@@ -36,7 +94,7 @@ namespace RNCCI.Modelos
 
             ////faz o pedido e tem uma resposta
             //RestResponse resposta = cliente.Execute(requesicao);
-            
+
             //vai fazer o requesito
             RestResponse resposta = EnviaRequesicao(codigoPostal);
 
@@ -57,11 +115,11 @@ namespace RNCCI.Modelos
                 double latitude = (double)resultado["lat"];
                 double longitude = (double)resultado["lon"];
 
-                return new double[] { latitude, longitude };
+                return new double[] { latitude, longitude };                
             }
 
             else
-                throw new RequesicaoHTTPFalhouException("RNCCI.Modelos.Morada.ObterCoordenadas");           
+                throw new RequesicaoHTTPFalhouException("RNCCI.Modelos.Morada.ObterCoordenadas");
         }
 
 
@@ -70,11 +128,11 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <param name="codigoPostal">codigo postal</param>
         /// <returns>true se for valido, false se não for válido</returns>
-        private static bool CodigoPostalValido (string codigoPostal)
+        private static bool CodigoPostalValido(string codigoPostal)
         {
             RestResponse resposta = EnviaRequesicao(codigoPostal);
 
-            if(resposta.IsSuccessful)
+            if (resposta.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 //cria um array Json com os resultados da requesicao
                 JArray resultados = JArray.Parse(resposta.Content);
@@ -83,7 +141,7 @@ namespace RNCCI.Modelos
                 return resultados.Count > 0;
             }
 
-            else 
+            else
                 return false;
         }
 
@@ -102,10 +160,60 @@ namespace RNCCI.Modelos
             RestClient cliente = new RestClient(requesitoUrl);
 
             //cria um objeto de requesito
-            RestRequest requesito = new RestRequest("Get");
+            RestRequest requesito = new RestRequest("GET");
 
-            return cliente.Execute(requesito);
+            RestResponse resposta = cliente.Execute(requesito);
+            return resposta;   
         }
 
+
+        /// <summary>
+        /// método para determinar a região 
+        /// </summary>
+        /// <param name="distrito">distrito</param>
+        /// <returns>regiao</returns>
+        /// <exception cref="DadoNaoPrevistoException">distrito invalido</exception>
+        private Regiao DeterminaRegiao(Distrito distrito)
+        {
+            switch (distrito)
+            {
+                case Distrito.VianaDoCastelo:
+                case Distrito.Braga:
+                case Distrito.Porto:
+                case Distrito.VilaReal:
+                case Distrito.Braganca:
+                    return Regiao.Norte;
+                    break;
+
+                case Distrito.CasteloBranco:
+                case Distrito.Guarda:
+                case Distrito.Aveiro:
+                case Distrito.Viseu:
+                case Distrito.Leiria:
+                case Distrito.Coimbra:
+                    return Regiao.Centro;
+                    break;
+
+                case Distrito.Faro:
+                    return Regiao.Algarve;
+                    break;
+
+                case Distrito.Lisboa:
+                case Distrito.Santarem:
+                case Distrito.Setubal:
+                    return Regiao.LisboaEValeDoTejo;
+                    break;
+
+                case Distrito.Beja:
+                case Distrito.Evora:
+                case Distrito.Portalegre:
+                    return Regiao.Alentejo;
+                    break;
+
+                default:
+                    throw new DadoNaoPrevistoException("RNCCI.Modelos.UnidadeClinica.UnidadeClinica");
+                    
+            }
+        }
     }
 }

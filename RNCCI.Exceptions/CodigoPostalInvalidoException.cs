@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace RNCCI.Excecoes
 {
-    public class RequesicaoHTTPFalhouException : Exception
+    public class CodigoPostalInvalidoException : Exception
     {
         /// <summary>
-        /// constructor
+        /// Constructor
         /// </summary>
         /// <param name="origem">onde a excecao foi atirada</param>
-        public RequesicaoHTTPFalhouException(string origem) => this.Source = origem;
+        public CodigoPostalInvalidoException(string origem) => this.Source = origem;
 
         /// <summary>
-        /// mensagem da excecao
+        /// Mensagem da excecao
         /// </summary>
-        public override string Message => "A requesicao HTTP falhou";
-        
+        public override string Message => "O codigo postal inserido é invalido";        
     }
 }
