@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace RNCCI.Modelos
 {
-    public class Cama
+    public class RegistoDeAdmissoes
     {
         public Doente Doente { get; set; }
-        public DateOnly DataInter { get; set; }
+
+        public Visitante Visitante { get; set; }
+
+        public DateTime DataEntrada { get; set; }
+
+        public DateTime DataSaida { get; set; } 
+
+        
     }
 }

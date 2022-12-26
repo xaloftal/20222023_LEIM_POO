@@ -18,4 +18,22 @@ namespace RNCCI.Enums
     {
         Norte, Alentejo, Algarve, LisboaEValeDoTejo, Centro
     };
+
+    public enum EstadoClinico
+    {
+        Internado, Falecido, Alta, EmEspera
+    };
+
+    public enum Sexo
+    {
+        Feminino, Masculino, Intersexo
+    }
+
+    public enum Tipologia
+    {
+        UnidadeDeCovalescenca, 
+        UnidadeDeMediaDuracaoEReabilitacao, 
+        UnidadeDeLongaDuracaoEManutencao,
+        EquipaDomiciliariaDeCuidadosContinuidadesIntegrados
+    }
 }
