@@ -2,11 +2,11 @@
 using RNCCI.Modelos;
 using RNCCI.Enums;
 
-Morada morada = new Morada("4770",Distrito.Braga );
-morada.Rua = "Rua das Boucas";
-morada.NumeroPorta = 313;
-morada.Cidade = "Avidos";
-Console.WriteLine($"{morada.Rua}, {morada.CodigoPostal} {morada.Cidade} ( {morada.Coordenadas} )");
+//Morada morada = new Morada("4770",Distrito.Braga );
+//morada.Rua = "Rua das Boucas";
+//morada.NumeroPorta = 313;
+//morada.Cidade = "Avidos";
+//Console.WriteLine($"{morada.Rua}, {morada.CodigoPostal} {morada.Cidade} ( {morada.Coordenadas} )");
 
 
 static void MenuDoDoente() 

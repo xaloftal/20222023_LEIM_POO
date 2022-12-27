@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RNCCI.Enums;
 
 namespace RNCCI.Modelos
 {
@@ -26,6 +27,6 @@ namespace RNCCI.Modelos
         /// <summary>
         /// Especialidade do médico
         /// </summary>
-        public string Especialidade { get; set; }
+        public Tipologia Especialidade { get; set; }
     }
 }

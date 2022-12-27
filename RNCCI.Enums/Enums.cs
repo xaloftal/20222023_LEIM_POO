@@ -36,4 +36,9 @@ namespace RNCCI.Enums
         UnidadeDeLongaDuracaoEManutencao,
         EquipaDomiciliariaDeCuidadosContinuidadesIntegrados
     }
+
+    public enum Doencas
+    {
+
+    }
 }

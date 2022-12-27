@@ -23,6 +23,13 @@ namespace RNCCI.Dados
         //    unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida" });
         //}
 
+        //metodos
+
+        /// <summary>
+        /// Lista todas as unidades
+        /// </summary>
+        public List<UnidadeClinica> Lista => this.unidades;
+
         /// <summary>
         /// usar este metodo para a insersao de novas clinicas
         /// </summary>

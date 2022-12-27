@@ -8,6 +8,15 @@ namespace RNCCI.Modelos
 {
     public class Visitante : Pessoa
     {
+        //variaveis
+        private int numeroVisitante=1000;
+
+        /// <summary>
+        /// construtor
+        /// </summary>
+        public Visitante() => this.NumeroVisitante += numeroVisitante;
+        
+
         /// <summary>
         /// número atribuido a cada visitante
         /// </summary>

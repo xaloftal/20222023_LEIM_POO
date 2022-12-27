@@ -23,9 +23,5 @@ namespace RNCCI.Modelos
         /// </summary>
         public int NumeroContribuinte { get; set; }
 
-        /// <summary>
-        /// email da pessoa
-        /// </summary>
-        public string Email { get; set; }
     }
 }

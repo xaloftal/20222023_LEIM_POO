@@ -42,6 +42,7 @@ namespace RNCCI.Modelos
         /// Morada do doente
         /// </summary>
         public Morada Morada { get; set; }
+        
 
     }
 }

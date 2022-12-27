@@ -19,8 +19,9 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <param name="codigoPostal">codigo postal</param>
         /// <param name="distrito">distrito</param>
-        public Morada(string codigoPostal, Distrito distrito)
+        public Morada(/*string codigoPostal,*/ Distrito distrito)
         {
+            /*
             bool valido = CodigoPostalValido(codigoPostal);
 
             if (valido)
@@ -30,12 +31,13 @@ namespace RNCCI.Modelos
             }
             else
                 throw new CodigoPostalInvalidoException("RNCCI.Modelos.Morada.Morada");            
-            
+            */
             this.Distrito = distrito;
             this.Regiao = DeterminaRegiao(distrito);
         }
 
         //propriedades
+
         /// <summary>
         /// Rua
         /// </summary>
@@ -74,6 +76,9 @@ namespace RNCCI.Modelos
 
 
         //metodos
+
+        /*
+        
         /// <summary>
         /// método para obter as coordenadas apartir do código postal
         /// </summary>
@@ -166,6 +171,7 @@ namespace RNCCI.Modelos
             return resposta;   
         }
 
+        */
 
         /// <summary>
         /// método para determinar a região 

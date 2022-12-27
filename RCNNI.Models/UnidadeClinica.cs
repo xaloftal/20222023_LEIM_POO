@@ -11,7 +11,7 @@ namespace RNCCI.Modelos
     public class UnidadeClinica
     {
         //variaveis de estado
-        int numeroClinica = 0;
+        int numeroClinica = 1000;
 
         /// <summary>
         /// construtor
@@ -21,12 +21,13 @@ namespace RNCCI.Modelos
         public UnidadeClinica() => this.NumeroClinica = ++numeroClinica;
 
 
+        //propriedades
 
         /// <summary>
         /// camas da unidade
         /// </summary>
         public Cama[] Cama { get; set; }
-
+        
         /// <summary>
         /// numero de identificacao da clinica
         /// </summary>
@@ -50,5 +51,10 @@ namespace RNCCI.Modelos
         public Morada Morada { get; set; }
 
         public Regiao Regiao { get; set; }
+
+        /// <summary>
+        /// Tipologia de resposta
+        /// </summary>
+        public Tipologia Tipologia { get; set; }
     }
 }
