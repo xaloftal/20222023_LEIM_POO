@@ -12,30 +12,30 @@ namespace RNCCI.Dados
     public class UnidadesClinicas
     {
         //lista
-        List<UnidadeClinica> unidades = new List<UnidadeClinica>();
+        List<UnidadeClinica> unidadesC = new List<UnidadeClinica>();
 
         /// <summary>
         /// constructor
         /// </summary>
-        //public UnidadesClinicas()
-        //{
-        //    unidades.Add(new UnidadeClinica(Distrito.Beja) { Nome = "Sorriso" });
-        //    unidades.Add(new UnidadeClinica(Distrito.Braga) { Nome = "Vida" });
-        //}
+        public UnidadesClinicas()
+        {
+            unidadesC.Add(new UnidadeClinica() { Nome = "Sorriso" });
+            unidadesC.Add(new UnidadeClinica() { Nome = "Vida" });
+        }
 
         //metodos
 
         /// <summary>
         /// Lista todas as unidades
         /// </summary>
-        public List<UnidadeClinica> Lista => this.unidades;
+        public List<UnidadeClinica> ListaUC => this.unidadesC;
 
         /// <summary>
         /// usar este metodo para a insersao de novas clinicas
         /// </summary>
         /// <param name="novaClinica">nova clinica a ser inserida no sistema</param>
         /// <exception cref="DadosNulosException">se os dados a serem inseridos sao nulos, a insercao não é possivel</exception>
-        /// <exception cref="ClinicaJaExisteException">se a clinica ja existe no sistema nao pode ser inserida novamente</exception>
+        /// <exception cref="DadoJaExisteException">se a clinica ja existe no sistema nao pode ser inserida novamente</exception>
         public void Add(UnidadeClinica novaClinica)
         {
             //não pode ser nulo
@@ -43,10 +43,10 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.UnidadesClinicas.Add");
 
             //verificar se a clinica já existe na clinica
-            if (this.unidades.Exists(u => u.NumeroClinica.Equals(novaClinica.NumeroClinica)))
-                throw new ClinicaJaExisteException("RNCCI.Dados.UnidadesClinicas.Add");
+            if (this.unidadesC.Exists(u => u.NumeroClinica.Equals(novaClinica.NumeroClinica)))
+                throw new DadoJaExisteException("RNCCI.Dados.UnidadesClinicas.Add");
 
-            this.unidades.Add(novaClinica);
+            this.unidadesC.Add(novaClinica);
         }
 
        

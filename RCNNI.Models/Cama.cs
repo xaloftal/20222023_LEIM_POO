@@ -46,24 +46,6 @@ namespace RNCCI.Modelos
         public bool Livre { get; set; }
 
 
-        //metodos
-
-        /// <summary>
-        /// usar este método para ocupar a cama
-        /// </summary>
-        Action<Cama, Doente> Ocupar { get; set; } = (cama, doente) =>
-        {
-            cama.Doente = doente;
-            cama.Livre = false;
-        };
-
-        /// <summary>
-        /// usar este método para desocupar a cama
-        /// </summary>
-        Action<Cama> Desocupar { get; set; } = (cama) =>
-        {
-            cama.Doente = null;
-            cama.Livre = true;
-        };
+       
     }
 }

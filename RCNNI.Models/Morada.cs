@@ -14,12 +14,14 @@ namespace RNCCI.Modelos
     {
         //variaveis
         
+
+        /*
         /// <summary>
         /// construtor
         /// </summary>
         /// <param name="codigoPostal">codigo postal</param>
         /// <param name="distrito">distrito</param>
-        public Morada(/*string codigoPostal,*/ Distrito distrito)
+        public Morada(/*string codigoPostal, Distrito distrito)
         {
             /*
             bool valido = CodigoPostalValido(codigoPostal);
@@ -31,11 +33,14 @@ namespace RNCCI.Modelos
             }
             else
                 throw new CodigoPostalInvalidoException("RNCCI.Modelos.Morada.Morada");            
-            */
-            this.Distrito = distrito;
-            this.Regiao = DeterminaRegiao(distrito);
-        }
+            
 
+            this.Distrito = distrito;
+            this.Regiao = Moradas.DeterminaRegiao(distrito);
+            
+        }
+    */
+    
         //propriedades
 
         /// <summary>
@@ -173,53 +178,6 @@ namespace RNCCI.Modelos
 
         */
 
-        /// <summary>
-        /// método para determinar a região 
-        /// </summary>
-        /// <param name="distrito">distrito</param>
-        /// <returns>regiao</returns>
-        /// <exception cref="DadoNaoPrevistoException">distrito invalido</exception>
-        private Regiao DeterminaRegiao(Distrito distrito)
-        {
-            switch (distrito)
-            {
-                case Distrito.VianaDoCastelo:
-                case Distrito.Braga:
-                case Distrito.Porto:
-                case Distrito.VilaReal:
-                case Distrito.Braganca:
-                    return Regiao.Norte;
-                    break;
-
-                case Distrito.CasteloBranco:
-                case Distrito.Guarda:
-                case Distrito.Aveiro:
-                case Distrito.Viseu:
-                case Distrito.Leiria:
-                case Distrito.Coimbra:
-                    return Regiao.Centro;
-                    break;
-
-                case Distrito.Faro:
-                    return Regiao.Algarve;
-                    break;
-
-                case Distrito.Lisboa:
-                case Distrito.Santarem:
-                case Distrito.Setubal:
-                    return Regiao.LisboaEValeDoTejo;
-                    break;
-
-                case Distrito.Beja:
-                case Distrito.Evora:
-                case Distrito.Portalegre:
-                    return Regiao.Alentejo;
-                    break;
-
-                default:
-                    throw new DadoNaoPrevistoException("RNCCI.Modelos.UnidadeClinica.UnidadeClinica");
-                    
-            }
-        }
+       
     }
 }
