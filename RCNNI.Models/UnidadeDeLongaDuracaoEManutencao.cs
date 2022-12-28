@@ -19,6 +19,7 @@ namespace RNCCI.Modelos
         {
             this.NumeroULDM += numeroULDM;
             this.Cama = new Cama[camasDisponiveis];
+            this.Tipologia = Enums.Tipologia.UnidadeDeLongaDuracaoEManutencao;
         }
 
 
