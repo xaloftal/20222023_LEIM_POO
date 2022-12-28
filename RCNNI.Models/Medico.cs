@@ -21,7 +21,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// código de identificação do profissional
         /// </summary>
-        public int CodigoMedico { get; set; }
+        public int CodigoMedico { get; private set; }
 
 
         /// <summary>

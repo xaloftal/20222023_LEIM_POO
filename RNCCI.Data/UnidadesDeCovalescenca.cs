@@ -9,7 +9,7 @@ using RNCCI.Excecoes;
 
 namespace RNCCI.Dados
 {
-    public class UnidadesDeCovalescenca 
+    public class UnidadesDeCovalescenca
     {
         //variaveis
         List<UnidadeDeCovalescenca> unidadesUCo = new List<UnidadeDeCovalescenca>();
@@ -75,5 +75,21 @@ namespace RNCCI.Dados
         }
 
 
+        public void Update(UnidadeDeCovalescenca unidadeUCo)
+        {
+            //não pode ser nulo
+            if (unidadeUCo is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeCovalenscenca.Update");
+
+            //tem de existir
+            if (!this.unidadesUCo.Exists(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeCovalenscenca.Delete");
+
+            //encontra na lista
+            int index = unidadesUCo.FindIndex(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC));
+
+            //atualiza a unidade
+            unidadesUCo[index] = unidadeUCo;
+        }
     }
 }

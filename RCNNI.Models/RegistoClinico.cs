@@ -28,7 +28,7 @@ namespace RNCCI.Modelos
         /// </summary>
         public Doente Doente { get; set; }
 
-        public int NumeroRegisto { get; set; }
+        public int NumeroRegisto { get; private set; }
 
         /// <summary>
         /// médico responsável

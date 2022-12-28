@@ -20,6 +20,6 @@ namespace RNCCI.Modelos
         /// <summary>
         /// número atribuido a cada visitante
         /// </summary>
-        public int NumeroVisitante { get; set; }
+        public int NumeroVisitante { get; private set; }
     }
 }
