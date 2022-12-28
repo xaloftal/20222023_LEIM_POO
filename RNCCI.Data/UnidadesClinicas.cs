@@ -46,10 +46,8 @@ namespace RNCCI.Dados
             if (this.unidadesC.Exists(u => u.NumeroClinica.Equals(novaClinica.NumeroClinica)))
                 throw new DadoJaExisteException("RNCCI.Dados.UnidadesClinicas.Add");
 
+            //adiciona
             this.unidadesC.Add(novaClinica);
-        }
-
-       
-       
+        }     
     }
 }

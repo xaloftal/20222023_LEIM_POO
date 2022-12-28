@@ -48,14 +48,18 @@ namespace RNCCI.Dados
         public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
         {
             //não pode ser nulo
+            if (unidadeULDM is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
 
             //tem de existir
+            if (!this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
 
             //encontra na lista
+            int index = unidadesULDM.FindIndex(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM));
 
             //atualiza a unidade
+            unidadesULDM[index] = unidadeULDM;
         }
-
-
     }
 }
