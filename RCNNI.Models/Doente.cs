@@ -34,15 +34,24 @@ namespace RNCCI.Modelos
         public Sexo Sexo { get; set; }
 
         /// <summary>
-        /// Lista de pessoas autorizadas a visita
+        ///  pessoas autorizadas a visita
         /// </summary>
-        public List<Visitante> VisitantesAutorizados { get; set; }
+        public Visitante[] VisitantesAutorizados { get; set; }
 
         /// <summary>
         /// Morada do doente
         /// </summary>
         public Morada Morada { get; set; }
-        
 
+        /// <summary>
+        /// override do ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $"\tUtente n{this.NumeroUtente}\n\n" +
+            $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year}anos)\n" +
+            $"Sexo: {this.Sexo}\n" +
+            $"Morada: {this.Morada}\n" +
+            $"Numero Telemovel: {this.NumeroTelemovel}" +
+            $"Visitantes autorizados: {this.VisitantesAutorizados}";        
     }
 }

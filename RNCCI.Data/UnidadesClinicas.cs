@@ -50,6 +50,12 @@ namespace RNCCI.Dados
             this.unidadesC.Add(novaClinica);
         }
 
+        /// <summary>
+        /// eliminar unidades clinicas
+        /// </summary>
+        /// <param name="unidadeC">unidade clinica a ser eliminada</param>
+        /// <exception cref="DadosNulosException">unidadeC e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">a unidade a ser eliminada nao existe</exception>
         public void Delete(UnidadeClinica unidadeC)
         {
             //não pode ser nulo
@@ -67,6 +73,12 @@ namespace RNCCI.Dados
             unidadesC.RemoveAt(index);
         }
 
+        /// <summary>
+        /// atualiza uma clinica 
+        /// </summary>
+        /// <param name="unidadeC">clinica com as informacoes novas a serem atualizadas</param>
+        /// <exception cref="DadosNulosException">unidadeC e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">a clinica a ser atualizada nao existe</exception>
         public void Update(UnidadeClinica unidadeC)
         {
             //não pode ser nulo
