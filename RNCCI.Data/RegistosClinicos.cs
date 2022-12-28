@@ -13,12 +13,34 @@ namespace RNCCI.Dados
 
         List<RegistoClinico> registosClinicos = new List<RegistoClinico>();
 
+        /// <summary>
+        /// construtor
+        /// </summary>
         public RegistosClinicos()
         {
-            registosClinicos.Add(new RegistoClinico {Diagnostico = Enums.Doencas.Covid, DataAdmissao = new DateOnly(2020,1,1), DataAlta = new DateOnly(2022,3,3)});
+
+            registosClinicos.Add(new RegistoClinico
+            {
+                Diagnostico = Enums.Doencas.Covid,
+                DataAdmissao = new DateOnly(2020, 1, 1),
+                DataAlta = new DateOnly(2022, 3, 3),
+                EstadoClinico = Enums.EstadoClinico.Internado,
+                Doente = new Doente
+                {
+                    Nome = "Manel Figueiras",
+                    NumeroContribuinte = 4325,
+                    NumeroTelemovel = 934656324
+                }
+            });
 
         }
 
+        /// <summary>
+        /// Adicionar novo registo clinico
+        /// </summary>
+        /// <param name="novoRegistoClinico">novo registo clinico</param>
+        /// <exception cref="DadosNulosException">quando o novoRegistoClinico é nulo</exception>
+        /// <exception cref="DadoJaExisteException">quando o novoRegistoClinico não é nulo</exception>
         public void Add(RegistoClinico novoRegistoClinico)
         {
             //não pode ser nulo
@@ -33,6 +55,12 @@ namespace RNCCI.Dados
             this.registosClinicos.Add(novoRegistoClinico);
         }
 
+        /// <summary>
+        /// Eliminar um registo clinico
+        /// </summary>
+        /// <param name="registoClinico">um registo clinico</param>
+        /// <exception cref="DadosNulosException">quando o registoClinico é nulo</exception>
+        /// <exception cref="DadoNaoExisteException">quando o registoClinico não é nulo</exception>
         public void Delete(RegistoClinico registoClinico)
         {
             //não pode ser nulo
@@ -51,11 +79,11 @@ namespace RNCCI.Dados
         }
 
         /// <summary>
-        /// atualizar um registo clinico
+        /// Atualizar um registo clinico
         /// </summary>
-        /// <param name="registoClinico"></param>
-        /// <exception cref="DadosNulosException"></exception>
-        /// <exception cref="DadoNaoExisteException"></exception>
+        /// <param name="registoClinico">um registo clinico</param>
+        /// <exception cref="DadosNulosException">quando o registoClinico é nulo</exception>
+        /// <exception cref="DadoNaoExisteException">quando o registoClinico não é nulo</exception>
         public void Update(RegistoClinico registoClinico)
         {
             //não pode ser nulo
@@ -73,7 +101,18 @@ namespace RNCCI.Dados
             registosClinicos[index] = registoClinico;
         }
 
+        /// <summary>
+        /// Lista todos os registos clinicos
+        /// </summary>
+        /// <param name="registoClinicos">todos os registos clinicos</param>
         public void ListarTodosOsRegistosClinicos(List<RegistoClinico> registoClinicos)
+        {
+            foreach (RegistoClinico registoClinico in registoClinicos)
+            {
+                Console.WriteLine(registoClinicos.ToString());
+            }
+        }
+        public void ListarTodosOsDoentes(List<RegistoClinico> registoClinicos)
         {
             foreach (RegistoClinico registoClinico in registoClinicos)
             {

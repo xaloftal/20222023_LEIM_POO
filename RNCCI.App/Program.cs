@@ -12,6 +12,7 @@ using RNCCI.Dados;
 Doentes doentes1 = new Doentes();
 
 
+
 static void MenuDoDoente() 
 {
     Console.WriteLine("---------------MENU DO DOENTE---------------\n");

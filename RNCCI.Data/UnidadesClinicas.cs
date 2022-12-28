@@ -84,12 +84,17 @@ namespace RNCCI.Dados
             unidadesC[index] = unidadeC;
         }
 
-        public void ListarTodosOsUnidadesClínicas(List<UnidadeClinica> unidadeClinica)
+        public void ListarTodosOsUnidadesClínicas(List<UnidadeClinica> unidadesC)
         {
-            foreach (UnidadeClinica unidadeClinica in unidadesC)
+            foreach (UnidadeClinica unidadeC in unidadesC)
             {
                 Console.WriteLine(unidadesC.ToString());
             }
+        }
+
+        public void ListarTodosOsDoentes(List<UnidadeClinica> unidadesC)
+        {
+
         }
     }
 }
