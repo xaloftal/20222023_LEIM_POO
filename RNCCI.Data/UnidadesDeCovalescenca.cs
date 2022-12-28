@@ -21,7 +21,7 @@ namespace RNCCI.Dados
         public UnidadesDeCovalescenca()
         {
             unidadesUCo.Add(new UnidadeDeCovalescenca(6) { Nome = "Coativo" });
-            unidadesUCo.Add(new UnidadeDeCovalescenca(3) { Nome = "Cojito", /*Rua não tou a conseguir meter, será que morada tem de ser interface?*/ });
+            unidadesUCo.Add(new UnidadeDeCovalescenca(3) { Nome = "Cojito" });
         }
 
 

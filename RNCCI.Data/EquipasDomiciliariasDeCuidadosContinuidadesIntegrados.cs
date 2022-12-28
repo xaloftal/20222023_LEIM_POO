@@ -39,7 +39,7 @@ namespace RNCCI.Dados
                 throw new DadoNaoExisteException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Delete");
 
             //encontra o index da unidade na lista
-            int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroUC));
+            int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI));
 
             //remove a unidade
             unidadesDCCI.RemoveAt(index);
