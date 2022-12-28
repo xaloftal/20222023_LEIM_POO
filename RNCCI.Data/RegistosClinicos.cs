@@ -24,7 +24,6 @@ namespace RNCCI.Dados
             {
                 Diagnostico = Enums.Doencas.Covid,
                 DataAdmissao = new DateOnly(2020, 1, 1),
-                DataAlta = new DateOnly(2022, 3, 3),
                 EstadoClinico = Enums.EstadoClinico.Internado,
                 UnidadeClinica = new UnidadeClinica
                 {
@@ -88,7 +87,7 @@ namespace RNCCI.Dados
         /// Atualizar um registo clinico
         /// </summary>
         /// <param name="registoClinico">um registo clinico</param>
-        /// <exception cref="DadosNulosException">quando o registoClinico é nulo</exception>
+        /// <exception cref="DadosNulosException">quando o registoClinico não existe</exception>
         /// <exception cref="DadoNaoExisteException">quando o registoClinico não é nulo</exception>
         public void Update(RegistoClinico registoClinico)
         {
@@ -124,7 +123,10 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
         /// <returns></returns>
-        public List<RegistoClinico> ListarTodosOsDoentes(RegistoClinico unidadeFiltrada) => this.registosClinicos.Where(t => t.UnidadeClinica.Equals(unidadeFiltrada)).ToList();
+        public List<RegistoClinico> ListarTodosOsDoentes(Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Equals(unidadeFiltrada)).ToList();
+
+
+
 
     }
 }

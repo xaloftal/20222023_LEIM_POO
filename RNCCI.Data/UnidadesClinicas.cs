@@ -19,8 +19,8 @@ namespace RNCCI.Dados
         /// </summary>
         public UnidadesClinicas()
         {
-            unidadesC.Add(new UnidadeClinica() { Nome = "Sorriso", Tipologia = Tipologia.UnidadeDeCovalescenca });
-            unidadesC.Add(new UnidadeClinica() { Nome = "Vida", Tipologia = Tipologia.UnidadeDeMediaDuracaoEReabilitacao});
+            unidadesC.Add(new UnidadeClinica() { Nome = "Sorriso" });
+            unidadesC.Add(new UnidadeClinica() { Nome = "Vida"});
         }
 
         //metodos
