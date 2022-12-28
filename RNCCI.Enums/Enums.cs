@@ -39,6 +39,6 @@ namespace RNCCI.Enums
 
     public enum Doencas
     {
-
+        Covid
     }
 }
