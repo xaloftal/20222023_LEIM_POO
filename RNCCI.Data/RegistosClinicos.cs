@@ -66,5 +66,6 @@ namespace RNCCI.Dados
             //atualiza a unidade
             registosClinicos[index] = registoClinico;
         }
+
     }
 }

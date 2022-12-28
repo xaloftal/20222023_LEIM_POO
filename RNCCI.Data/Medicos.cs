@@ -31,7 +31,7 @@ namespace RNCCI.Dados
             switch (medico.Especialidade)
             {
                 case Tipologia.UnidadeDeCovalescenca:
-                   // UnidadesDeCovalescenca.Medicos.Add(medico); //mana é qulquer coisa assim para adicionar à lista dele logo
+                  //UnidadesDeCovalescenca.Medicos.Add(medico); adicionar medico desta tipologia
                     break;
 
                 case Tipologia.UnidadeDeMediaDuracaoEReabilitacao:
