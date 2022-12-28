@@ -11,54 +11,60 @@ namespace RNCCI.Dados
     public class Visitantes
     {
 
-        List<Doente> doentes = new List<Doente>();
+        List<Visitante> visitantes = new List<Visitante>();
 
-        public Doentes()
+        public Visitantes()
         {
-            doentes.Add(new Doente { Nome = "Manel Figueiras", NumeroContribuinte = 4325, NumeroTelemovel = 934656324 });
+            visitantes.Add(new Visitante { Nome = "Maria Figueiras", NumeroContribuinte = 4375, NumeroTelemovel = 934659324 });
 
         }
 
-        public void Add(UnidadeDeLongaDuracaoEManutencao novaUnidade)
+        public void Add(Visitante novoVisitante)
         {
             //não pode ser nulo
-            if (novaUnidade is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Add");
+            if (novoVisitante is null)
+                throw new DadosNulosException("RNCCI.Dados.Visitantes.Add");
 
             //nao pode existir
-            if (this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(novaUnidade.NumeroULDM)))
-                throw new DadoJaExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Add");
+            if (this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(novoVisitante.NumeroVisitante)))
+                throw new DadoJaExisteException("RNCCI.Dados.Visitantes.Add");
 
             //adiciona
-            this.unidadesULDM.Add(novaUnidade);
+            this.visitantes.Add(novoVisitante);
         }
 
-        public void Delete(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        public void Delete(Visitante visitante)
         {
             //não pode ser nulo
-            if (unidadeULDM is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
+            if (visitante is null)
+                throw new DadosNulosException("RNCCI.Dados.Visitantes.Delete");
 
             //tem de existir
-            if (!this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
+            if (!this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Delete");
 
             //encontra na lista
-            int index = unidadesULDM.FindIndex(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM));
+            int index = visitantes.FindIndex(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante));
 
             //apaga
-            unidadesULDM.RemoveAt(index);
+            visitantes.RemoveAt(index);
         }
 
-        public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        public void Update(Visitante visitante)
         {
             //não pode ser nulo
+            if (visitante is null)
+                throw new DadosNulosException("RNCCI.Dados.Visitantes.Update");
 
             //tem de existir
+            if (!this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Update");
 
             //encontra na lista
+            int index = visitantes.FindIndex(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante));
 
             //atualiza a unidade
+            visitantes[index] = visitante;
         }
     }
 }

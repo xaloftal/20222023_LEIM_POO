@@ -55,11 +55,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (doente is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+                throw new DadosNulosException("RNCCI.Dados.Doentes.Update");
 
             //tem de existir
             if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Update");
 
             //encontra na lista
             int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
@@ -67,6 +67,8 @@ namespace RNCCI.Dados
             //atualiza a unidade
             doentes[index] = doente;
         }
+
+
 
     }
 }
