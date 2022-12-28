@@ -16,9 +16,11 @@ namespace RNCCI.Modelos
         /// constructor
         /// </summary>
         public RegistoClinico() =>  this.NumeroRegisto += numeroRegisto;
-           
-    
-        
+         
+        /// <summary>
+        /// Estado de saúde do doente
+        /// </summary>
+        public string EstadoSaude { get; set; }
 
         /// <summary>
         /// Doente 
@@ -33,7 +35,7 @@ namespace RNCCI.Modelos
         public Medico Medico { get; set; }
 
         /// <summary>
-        /// Diagnostico 
+        /// Diagnóstico 
         /// </summary>
         public Doencas Diagnostico { get; set; }
 
