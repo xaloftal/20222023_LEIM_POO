@@ -57,6 +57,12 @@ namespace RNCCI.Dados
             this.unidadesUCo.Add(novaUnidade);
         }
 
+        /// <summary>
+        /// usar este metodo para eliminar unidades no sistema
+        /// </summary>
+        /// <param name="unidadeUCo">unidade a ser eliminada</param>
+        /// <exception cref="DadosNulosException">se unidadeUCo é nula</exception>
+        /// <exception cref="DadoNaoExisteException">se a unidade a ser eliminada não existe</exception>
         public void Delete(UnidadeDeCovalescenca unidadeUCo)
         {
             //não pode ser nulo
@@ -74,7 +80,12 @@ namespace RNCCI.Dados
             unidadesUCo.RemoveAt(index);
         }
 
-
+        /// <summary>
+        /// usar este metodo para atualizar unidades de covalescenca
+        /// </summary>
+        /// <param name="unidadeUCo">unidade com os dados atualizados</param>
+        /// <exception cref="DadosNulosException">caso unidadeUCo esteja nula</exception>
+        /// <exception cref="DadoNaoExisteException">caso a unidade original não exista</exception>
         public void Update(UnidadeDeCovalescenca unidadeUCo)
         {
             //não pode ser nulo

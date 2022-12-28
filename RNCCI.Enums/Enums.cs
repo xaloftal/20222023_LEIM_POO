@@ -34,7 +34,8 @@ namespace RNCCI.Enums
         UnidadeDeCovalescenca, 
         UnidadeDeMediaDuracaoEReabilitacao, 
         UnidadeDeLongaDuracaoEManutencao,
-        EquipaDomiciliariaDeCuidadosContinuidadesIntegrados
+        EquipaDomiciliariaDeCuidadosContinuidadesIntegrados,
+        UnidadeClinica
     }
 
     public enum Doencas

@@ -48,6 +48,40 @@ namespace RNCCI.Dados
 
             //adiciona
             this.unidadesC.Add(novaClinica);
-        }     
+        }
+
+        public void Delete(UnidadeClinica unidadeC)
+        {
+            //não pode ser nulo
+            if (unidadeC is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesClinicas.Delete");
+
+            //a unidade tem de existir para ser eliminada
+            if (!this.unidadesC.Exists(dcci => dcci.NumeroClinica.Equals(unidadeC.NumeroClinica)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Delete");
+
+            //encontra o index da unidade na lista
+            int index = unidadesC.FindIndex(dcci => dcci.NumeroClinica.Equals(unidadeC.NumeroClinica));
+
+            //remove a unidade
+            unidadesDCCI.RemoveAt(index);
+        }
+
+        public void Update(UnidadeClinica unidadeC)
+        {
+            //não pode ser nulo
+            if (unidadeDCCI is null)
+                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+
+            //tem de existir
+            if (!this.unidadesDCCI.Exists(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadeEquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+
+            //encontra na lista
+            int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI));
+
+            //atualiza a unidade
+            unidadesDCCI[index] = unidadeDCCI;
+        }
     }
 }
