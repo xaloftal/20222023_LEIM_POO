@@ -67,7 +67,7 @@ namespace RNCCI.Modelos
             $"Diagnostico: {this.Diagnostico}\n" +
             $"Data admissao: {this.DataAdmissao}\n" +
             $"Data alta: {this.DataAlta} \n\n" +
-            $"Medico responsavel: {this.Medico.Nome}";
+            $"Medico responsavel: {this.Medico.Nome}\n\n\n";
         
     }
 }
