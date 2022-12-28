@@ -1,4 +1,5 @@
 ﻿using RNCCI.Enums;
+using RNCCI.Excecoes;
 using RNCCI.Modelos;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,51 @@ namespace RNCCI.Dados
 
         public Doentes()
         {
-            doentes.Add(new Doente { Nome = "Manel Figueiras", NumeroContribuinte = 4325, });
-
+            doentes.Add(new Doente { Nome = "Manel Figueiras", NumeroContribuinte = 4325, NumeroTelemovel = 934656324 });
 
         }
+
+        public void Add(Doente novoDoente)
+        {
+            //não pode ser nulo
+            if (novoDoente is null)
+                throw new DadosNulosException("RNCCI.Dados.Doentes.Add");
+
+            //nao pode existir
+            if (this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(novoDoente.NumeroUtente)))
+                throw new DadoJaExisteException("RNCCI.Dados.Doentes.Add");
+
+            //adiciona
+            this.doentes.Add(novoDoente);
+        }
+
+        public void Delete(Doente doente)
+        {
+            //não pode ser nulo
+            if (doente is null)
+                throw new DadosNulosException("RNCCI.Dados.Doentes.Delete");
+
+            //tem de existir
+            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Delete");
+
+            //encontra na lista
+            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
+
+            //apaga
+            doentes.RemoveAt(index);
+        }
+
+        public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        {
+            //não pode ser nulo
+
+            //tem de existir
+
+            //encontra na lista
+
+            //atualiza a unidade
+        }
+
     }
 }
