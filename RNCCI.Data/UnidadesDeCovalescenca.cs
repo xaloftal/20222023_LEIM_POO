@@ -15,6 +15,7 @@ namespace RNCCI.Dados
         List<UnidadeDeCovalescenca> unidadesUCo = new List<UnidadeDeCovalescenca>();
 
 
+
         /// <summary>
         /// construtor
         /// </summary>
