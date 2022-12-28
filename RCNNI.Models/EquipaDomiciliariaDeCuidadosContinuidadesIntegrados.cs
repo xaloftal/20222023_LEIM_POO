@@ -6,27 +6,24 @@ using System.Threading.Tasks;
 
 namespace RNCCI.Modelos
 {
-    public class UnidadeDeLongaDuracaoEManutencao : UnidadeClinica
+    public class EquipaDomiciliariaDeCuidadosContinuidadesIntegrados : UnidadeClinica
     {
         //variveis
-        private int numeroULDM = 1000;
+        private int numeroEDCCI = 1000;
 
         /// <summary>
         /// construtor
         /// </summary>
         /// <param name="camasDisponiveis">camas disponiveis para a unidade</param>
-        public UnidadeDeLongaDuracaoEManutencao(int camasDisponiveis)
+        public EquipaDomiciliariaDeCuidadosContinuidadesIntegrados(int camasDisponiveis)
         {
-            this.NumeroULDM += numeroULDM;
+            this.NumeroEDCCI += numeroEDCCI;
             this.Cama = new Cama[camasDisponiveis];
         }
 
-
-        //propriedades
-
         /// <summary>
-        /// Numero da unidade de longa duracao e manutencao
+        /// numero da equipa domiciliaria de cuidados continuidades integrados
         /// </summary>
-        public int NumeroULDM { get; private set; }
+        public int NumeroEDCCI { get; set; }
     }
 }

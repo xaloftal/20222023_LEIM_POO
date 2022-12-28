@@ -14,13 +14,16 @@ namespace RNCCI.Modelos
         /// <summary>
         /// construtor
         /// </summary>
-        /// <param name="camasDisponiveis">camas disponeiveis para a unidade</param>
+        /// <param name="camasDisponiveis">camas disponiveis para a unidade</param>
         public UnidadeDeMediaDuracaoEReabilitacao(int camasDisponiveis)
         {
             this.NumeroUMDR += numeroUMDR;
             this.Cama = new Cama[camasDisponiveis];
         }
 
+        /// <summary>
+        /// numero da unidade de media duracao e reabilitacao
+        /// </summary>
         public int NumeroUMDR { get; private set; }
     }
 }

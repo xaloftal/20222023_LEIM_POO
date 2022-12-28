@@ -17,7 +17,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// construtor
         /// </summary>
-        /// <param name="camasDisponiveis">camas disponeiveis para a unidade</param>
+        /// <param name="camasDisponiveis">camas disponiveis para a unidade</param>
         public UnidadeDeCovalescenca(int camasDisponiveis)
         {
             this.NumeroUC += numeroUC;

@@ -9,13 +9,13 @@ using RNCCI.Excecoes;
 
 namespace RNCCI.Dados
 {
-    public class UnidadesDeMediaDuracaoEReabilitacao
+    public class EquipasDomiciliariasDeCuidadosContinuidadesIntegrados
     {
         //variaveis
-        List<UnidadeDeMediaDuracaoEReabilitacao> unidadesMDR = new List<UnidadeDeMediaDuracaoEReabilitacao>();
+        List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados> unidadesMDR = new List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados>();
 
 
-        public void Add(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
+        public void Add(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeEDCCI)
         {
             //não pode ser nulo
 
@@ -24,7 +24,7 @@ namespace RNCCI.Dados
             //adiciona
         }
 
-        public void Delete(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
+        public void Delete(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeEDCCI)
         {
             //não pode ser nulo
 
@@ -35,7 +35,7 @@ namespace RNCCI.Dados
             //apaga
         }
 
-        public void Update(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
+        public void Update(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeEDCCI)
         {
             //não pode ser nulo
 
