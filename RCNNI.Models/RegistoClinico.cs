@@ -13,14 +13,11 @@ namespace RNCCI.Modelos
         private int numeroRegisto = 1000;
 
         /// <summary>
-        /// construtor
+        /// constructor
         /// </summary>
-        /// <param name="doente">doente do registro</param>
-        public RegistoClinico(Doente doente)
-        {
-            this.NumeroRegisto += numeroRegisto;
-            this.Doente = doente;
-        }
+        public RegistoClinico() =>  this.NumeroRegisto += numeroRegisto;
+           
+    
         
 
         /// <summary>

@@ -15,56 +15,56 @@ namespace RNCCI.Dados
 
         public RegistosClinicos()
         {
-            registosClinicos.Add(new RegistoClinico() {  });
+            registosClinicos.Add(new RegistoClinico {Diagnostico = Enums.Doencas.Covid, DataAdmissao = new DateOnly(2020,1,1), DataAlta = new DateOnly(2022,3,3)});
 
         }
 
-        public void Add(Doente novoDoente)
+        public void Add(RegistoClinico novoRegistoClinico)
         {
             //não pode ser nulo
-            if (novoDoente is null)
-                throw new DadosNulosException("RNCCI.Dados.Doentes.Add");
+            if (novoRegistoClinico is null)
+                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Add");
 
             //nao pode existir
-            if (this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(novoDoente.NumeroUtente)))
-                throw new DadoJaExisteException("RNCCI.Dados.Doentes.Add");
+            if (this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto)))
+                throw new DadoJaExisteException("RNCCI.Dados.RegistosClinicos.Add");
 
             //adiciona
-            this.doentes.Add(novoDoente);
+            this.registosClinicos.Add(novoRegistoClinico);
         }
 
-        public void Delete(Doente doente)
+        public void Delete(RegistoClinico registoClinico)
         {
             //não pode ser nulo
-            if (doente is null)
-                throw new DadosNulosException("RNCCI.Dados.Doentes.Delete");
+            if (registoClinico is null)
+                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Delete");
 
             //tem de existir
-            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Delete");
+            if (!this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Delete");
 
             //encontra na lista
-            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
+            int index = registosClinicos.FindIndex(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
 
             //apaga
-            doentes.RemoveAt(index);
+            registosClinicos.RemoveAt(index);
         }
 
-        public void Update(Doente doente)
+        public void Update(RegistoClinico registoClinico)
         {
             //não pode ser nulo
-            if (doente is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+            if (registoClinico is null)
+                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Update");
 
             //tem de existir
-            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+            if (!this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Update");
 
             //encontra na lista
-            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
+            int index = registosClinicos.FindIndex(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
 
             //atualiza a unidade
-            doentes[index] = doente;
+            registosClinicos[index] = registoClinico;
         }
     }
 }
