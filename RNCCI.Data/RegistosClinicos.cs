@@ -1,4 +1,5 @@
-﻿using RNCCI.Excecoes;
+﻿using RNCCI.Enums;
+using RNCCI.Excecoes;
 using RNCCI.Modelos;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,11 @@ namespace RNCCI.Dados
                 DataAdmissao = new DateOnly(2020, 1, 1),
                 DataAlta = new DateOnly(2022, 3, 3),
                 EstadoClinico = Enums.EstadoClinico.Internado,
+                UnidadeClinica = new UnidadeClinica
+                {
+                    Nome = "Vida",
+                    Tipologia = Tipologia.UnidadeDeMediaDuracaoEReabilitacao
+                },
                 Doente = new Doente
                 {
                     Nome = "Manel Figueiras",
@@ -112,13 +118,7 @@ namespace RNCCI.Dados
                 Console.WriteLine(registoClinicos.ToString());
             }
         }
-        public void ListarTodosOsDoentes(List<RegistoClinico> registoClinicos)
-        {
-            foreach (RegistoClinico registoClinico in registoClinicos)
-            {
-                Console.WriteLine(registoClinicos.ToString());
-            }
-        }
+        public List<RegistoClinico> Get(RegistoClinico departmentToFilter) => this..Where(t => t.Department.Equals(departmentToFilter)).ToList();
 
     }
 }
