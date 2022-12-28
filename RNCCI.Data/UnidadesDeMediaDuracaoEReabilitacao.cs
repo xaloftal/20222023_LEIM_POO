@@ -49,12 +49,18 @@ namespace RNCCI.Dados
         public void Update(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
         {
             //não pode ser nulo
+            if (unidadeUMDR is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Update");
 
             //tem de existir
+            if (!this.unidadesMDR.Exists(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Update");
 
             //encontra na lista
+            int index = unidadesMDR.FindIndex(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR));
 
             //atualiza a unidade
+            unidadesMDR[index] = unidadeUMDR;
         }
     }
 }
