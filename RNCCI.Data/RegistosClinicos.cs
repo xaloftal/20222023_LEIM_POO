@@ -50,6 +50,12 @@ namespace RNCCI.Dados
             registosClinicos.RemoveAt(index);
         }
 
+        /// <summary>
+        /// atualizar um registo clinico
+        /// </summary>
+        /// <param name="registoClinico"></param>
+        /// <exception cref="DadosNulosException"></exception>
+        /// <exception cref="DadoNaoExisteException"></exception>
         public void Update(RegistoClinico registoClinico)
         {
             //não pode ser nulo

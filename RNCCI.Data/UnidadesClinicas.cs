@@ -57,31 +57,31 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.UnidadesClinicas.Delete");
 
             //a unidade tem de existir para ser eliminada
-            if (!this.unidadesC.Exists(dcci => dcci.NumeroClinica.Equals(unidadeC.NumeroClinica)))
+            if (!this.unidadesC.Exists(uc => uc.NumeroClinica.Equals(unidadeC.NumeroClinica)))
                 throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Delete");
 
             //encontra o index da unidade na lista
             int index = unidadesC.FindIndex(dcci => dcci.NumeroClinica.Equals(unidadeC.NumeroClinica));
 
             //remove a unidade
-            unidadesDCCI.RemoveAt(index);
+            unidadesC.RemoveAt(index);
         }
 
         public void Update(UnidadeClinica unidadeC)
         {
             //não pode ser nulo
-            if (unidadeDCCI is null)
-                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+            if (unidadeC is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesClinicas.Update");
 
             //tem de existir
-            if (!this.unidadesDCCI.Exists(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadeEquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+            if (!this.unidadesC.Exists(uc => uc.NumeroClinica.Equals(unidadeC.NumeroClinica)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Update");
 
             //encontra na lista
-            int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI));
+            int index = unidadesC.FindIndex(uc => uc.NumeroClinica.Equals(unidadeC.NumeroClinica));
 
             //atualiza a unidade
-            unidadesDCCI[index] = unidadeDCCI;
+            unidadesC[index] = unidadeC;
         }
 
         public void ListarTodosOsUnidadesClínicas(List<UnidadeClinica> unidadeClinica)

@@ -52,6 +52,73 @@ namespace RNCCI.Dados
             }
         };
 
+        /// <summary>
+        /// adiciona um medico novo ao sistema
+        /// </summary>
+        /// <param name="novoMedico">medico novo a adicionar</param>
+        /// <exception cref="DadosNulosException">novoMedico nulo</exception>
+        /// <exception cref="DadoJaExisteException">medico ja existe</exception>
+        public void Add(Medico novoMedico)
+        {
+            //não pode ser nulo
+            if (novoMedico is null)
+                throw new DadosNulosException("RNCCI.Dados.Medicos.Add");
+
+            //nao pode existir
+            if (this.medicos.Exists(m => m.CodigoMedico.Equals(novoMedico.CodigoMedico)))
+                throw new DadoJaExisteException("RNCCI.Dados.Medicos.Add");
+
+            //adiciona
+            this.medicos.Add(novoMedico);
+        }
+
+        /// <summary>
+        /// eliminar um medico
+        /// </summary>
+        /// <param name="medico"></param>
+        /// <exception cref="DadosNulosException">medico a eliminar nulo</exception>
+        /// <exception cref="DadoNaoExisteException">medico nao existe no sistema</exception>
+        public void Delete(Medico medico)
+        {
+            //não pode ser nulo
+            if (medico is null)
+                throw new DadosNulosException("RNCCI.Dados.Medicos.Delete");
+
+            //tem de existir
+            if (!this.medicos.Exists(m => m.CodigoMedico.Equals(medico.CodigoMedico)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Delete");
+
+            //encontra na lista
+            int index = medicos.FindIndex(m => m.CodigoMedico.Equals(medico.CodigoMedico));
+
+            //apaga
+            medicos.RemoveAt(index);
+        }
+
+
+        /// <summary>
+        /// atualizar a informacao de um medico 
+        /// </summary>
+        /// <param name="medico">medico com os dados atualizados</param>
+        /// <exception cref="DadosNulosException">medico nulo</exception>
+        /// <exception cref="DadoNaoExisteException">medico a atualizar nao existe</exception>
+        public void Update(Medico medico)
+        {
+            //não pode ser nulo
+            if (medico is null)
+                throw new DadosNulosException("RNCCI.Dados.Medicos.Update");
+
+            //tem de existir
+            if (!this.medicos.Exists(m => m.CodigoMedico.Equals(medico.CodigoMedico)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Update");
+
+            //encontra na lista
+            int index = medicos.FindIndex(m => m.CodigoMedico.Equals(medico.CodigoMedico));
+
+            //atualiza a unidade
+            medicos[index] = medico;
+        }
+
         public void ListarTodosOsMedicos(List<Medico> medicos)
         {
             foreach (Medico medico in medicos)
