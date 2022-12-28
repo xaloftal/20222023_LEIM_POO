@@ -9,6 +9,7 @@ using RNCCI.Enums;
 //Console.WriteLine($"{morada.Rua}, {morada.CodigoPostal} {morada.Cidade} ( {morada.Coordenadas} )");
 
 
+
 static void MenuDoDoente() 
 {
     Console.WriteLine("---------------MENU DO DOENTE---------------\n");

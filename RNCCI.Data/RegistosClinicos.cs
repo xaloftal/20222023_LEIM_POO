@@ -16,7 +16,7 @@ namespace RNCCI.Dados
         public Doentes()
         {
             doentes.Add(new Doente { Nome = "Manel Figueiras", NumeroContribuinte = 4325, NumeroTelemovel = 934656324 });
-
+            doentes.Add(doente1)
         }
 
         public void Add(UnidadeDeLongaDuracaoEManutencao novaUnidade)
