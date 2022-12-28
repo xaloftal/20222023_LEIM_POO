@@ -51,15 +51,21 @@ namespace RNCCI.Dados
             doentes.RemoveAt(index);
         }
 
-        public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        public void Update(Doente doente)
         {
             //não pode ser nulo
+            if (doente is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
 
             //tem de existir
+            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
 
             //encontra na lista
+            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
 
             //atualiza a unidade
+            doentes[index] = doente;
         }
 
     }
