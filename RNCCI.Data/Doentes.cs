@@ -17,6 +17,7 @@ namespace RNCCI.Dados
         public Doentes()
         {
             doentes.Add(new Doente { Nome = "Manel Figueiras", NumeroContribuinte = 4325, NumeroTelemovel = 934656324 });
+            doentes.Add(new Doente { Nome = "Joaquina Almeida", NumeroContribuinte = 4095, NumeroTelemovel = 934436324 });
 
         }
 
@@ -68,7 +69,13 @@ namespace RNCCI.Dados
             doentes[index] = doente;
         }
 
-
+       public void ListarTodosOsDoentes (List<Doente> doentes)
+        {
+            foreach (Doente doente in doentes)
+            {
+                Console.WriteLine(doentes.ToString());
+            }
+        }
 
     }
 }

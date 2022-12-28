@@ -10,8 +10,6 @@ namespace RNCCI.Dados
 {
     public class Camas
     {
-
-
         //metodos
 
         /// <summary>

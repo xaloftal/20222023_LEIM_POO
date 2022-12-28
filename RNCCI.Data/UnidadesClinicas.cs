@@ -83,5 +83,13 @@ namespace RNCCI.Dados
             //atualiza a unidade
             unidadesDCCI[index] = unidadeDCCI;
         }
+
+        public void ListarTodosOsUnidadesClínicas(List<UnidadeClinica> unidadeClinica)
+        {
+            foreach (UnidadeClinica unidadeClinica in unidadesC)
+            {
+                Console.WriteLine(unidadesC.ToString());
+            }
+        }
     }
 }

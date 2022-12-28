@@ -67,5 +67,13 @@ namespace RNCCI.Dados
             registosClinicos[index] = registoClinico;
         }
 
+        public void ListarTodosOsRegistosClinicos(List<RegistoClinico> registoClinicos)
+        {
+            foreach (RegistoClinico registoClinico in registoClinicos)
+            {
+                Console.WriteLine(registoClinicos.ToString());
+            }
+        }
+
     }
 }

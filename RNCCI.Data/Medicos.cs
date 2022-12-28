@@ -51,5 +51,13 @@ namespace RNCCI.Dados
                     
             }
         };
+
+        public void ListarTodosOsMedicos(List<Medico> medicos)
+        {
+            foreach (Medico medico in medicos)
+            {
+                Console.WriteLine(medicos.ToString());
+            }
+        }
     }
 }
