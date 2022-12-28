@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RNCCI.Enums
 
 namespace RNCCI.Modelos
 {
@@ -22,6 +23,7 @@ namespace RNCCI.Modelos
         {
             this.NumeroUC += numeroUC;
             this.Cama = new Cama[camasDisponiveis];
+            this.Tipologia = Tipologia.UnidadeDeCovalescenca;
         }
 
         /// <summary>

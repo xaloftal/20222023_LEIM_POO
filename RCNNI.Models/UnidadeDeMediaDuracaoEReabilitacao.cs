@@ -19,6 +19,7 @@ namespace RNCCI.Modelos
         {
             this.NumeroUMDR += numeroUMDR;
             this.Cama = new Cama[camasDisponiveis];
+            this.Tipologia = Enums.Tipologia.UnidadeDeMediaDuracaoEReabilitacao;
         }
 
         /// <summary>
