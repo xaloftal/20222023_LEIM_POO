@@ -25,17 +25,24 @@ namespace RNCCI.Dados
                 throw new DadoJaExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Add");
 
             //adiciona
+            this.unidadesULDM.Add(novaUnidade);
         }
 
         public void Delete(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
         {
             //não pode ser nulo
+            if (unidadeULDM is null)
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
 
             //tem de existir
+            if (!this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM)))
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
 
             //encontra na lista
+            int index = unidadesULDM.FindIndex(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM));
 
             //apaga
+            unidadesULDM.RemoveAt(index);
         }
 
         public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
