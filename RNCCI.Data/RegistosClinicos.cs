@@ -110,7 +110,7 @@ namespace RNCCI.Dados
         /// Lista todos os registos clinicos
         /// </summary>
         /// <param name="registoClinicos">todos os registos clinicos</param>
-        public void ListarTodosOsRegistosClinicos(List<RegistoClinico> registoClinicos)
+        private void ListarRegistosClinicos(List<RegistoClinico> registoClinicos)
         {
             foreach (RegistoClinico registoClinico in registoClinicos)
             {
@@ -123,9 +123,27 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
         /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
-        public List<RegistoClinico> ListaTodosOsDoentesTipologia(Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
+        private List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
 
-        
+        /// <summary>
+        /// usa este metodo para listar todos os registos
+        /// </summary>
+        /// <param name="registosClinicos">registos clinicos</param>
+        public void ListaTodosRegistos(List<RegistoClinico> registosClinicos) => ListarRegistosClinicos(registosClinicos);
+
+        /// <summary>
+        /// use este metodo para listar os registos de unidades individuais
+        /// </summary>
+        /// <param name="registosClinicos">registos clinicos</param>
+        /// <param name="tipologiaAFiltrar">unidade a filtrar</param>
+        public void ListaRegistosPorTipologia (List<RegistoClinico> registosClinicos, Tipologia tipologiaAFiltrar)
+        {
+            //filtra a lista
+            List<RegistoClinico> registoFiltrado = ListaTodosOsDoentesTipologia(registosClinicos, tipologiaAFiltrar);
+
+            //Listar os registos ja filtrados
+            ListarRegistosClinicos(registoFiltrado);
+        }
 
     }
 }
