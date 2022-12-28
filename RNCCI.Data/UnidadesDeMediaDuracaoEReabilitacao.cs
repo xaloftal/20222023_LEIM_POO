@@ -14,7 +14,6 @@ namespace RNCCI.Dados
         //variaveis
         List<UnidadeDeMediaDuracaoEReabilitacao> unidadesMDR = new List<UnidadeDeMediaDuracaoEReabilitacao>();
 
-
         public void Add(UnidadeDeMediaDuracaoEReabilitacao novaClinica)
         {
             //não pode ser nulo
