@@ -20,7 +20,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// Estado de saúde do doente
         /// </summary>
-        public string EstadoSaude { get; set; }
+        public EstadoClinico EstadoClinico { get; set; }
 
         /// <summary>
         /// Doente 
