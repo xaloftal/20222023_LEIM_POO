@@ -104,9 +104,6 @@ namespace RNCCI.Dados
             }
         }
 
-        public void ListarTodosOsDoentes(List<UnidadeClinica> unidadesC)
-        {
-
-        }
+   
     }
 }

@@ -118,7 +118,13 @@ namespace RNCCI.Dados
                 Console.WriteLine(registoClinicos.ToString());
             }
         }
-        public List<RegistoClinico> Get(RegistoClinico departmentToFilter) => this..Where(t => t.Department.Equals(departmentToFilter)).ToList();
+
+        /// <summary>
+        /// Lista os doentes, as unidades e tipologias e a quantidade de camas disponíveis nestes
+        /// </summary>
+        /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
+        /// <returns></returns>
+        public List<RegistoClinico> ListarTodosOsDoentes(RegistoClinico unidadeFiltrada) => this.registosClinicos.Where(t => t.UnidadeClinica.Equals(unidadeFiltrada)).ToList();
 
     }
 }
