@@ -100,7 +100,6 @@ namespace RNCCI.Dados
             }
         }
 
-
         public void RegistarAdmissao (RegistoClinico doente, Visitante visitante, DateTime entrada, DateTime saida)
         {
             bool autorizado = doente.Doente.VisitantesAutorizados.ToList().Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante));
@@ -112,6 +111,8 @@ namespace RNCCI.Dados
             Add(registoDeVisitantes);
 
         }
+
+        public 
 
     }
 }

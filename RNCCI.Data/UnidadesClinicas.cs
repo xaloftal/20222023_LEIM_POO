@@ -147,10 +147,94 @@ namespace RNCCI.Dados
         }
 
 
-        public UnidadeClinica EscolherUnidade(RegistoClinico registo, Tipologia tipologia)
+        public UnidadeClinica EscolherUnidade(List<UnidadeClinica> unidadesClinicas, RegistoClinico registo, Tipologia tipologia)
         {
-            //filtrar unidades por tipologia
-            //verificar qual unidade 
+            List<UnidadeClinica> unidadeClinicasFiltradas = unidadesClinicas.Where(u => u.Tipologia.Equals(tipologia)).ToList();
+
+            List<UnidadeClinica> ordenadoPorCamaLivre = unidadeClinicasFiltradas.OrderByDescending(u => u.Cama.Where(c => c.Livre).Count()).ToList();
+
+            List<UnidadeClinica> unidadesCandidatas = new List<UnidadeClinica>();
+
+            if(ordenadoPorCamaLivre.Count == 0)
+                throw new CamasIndisponiveisException("RNCCI.Dados.UnidadesClinicas.EscolherUnidade");
+
+            UnidadeClinica unidadeCandidata = ordenadoPorCamaLivre.First();
+
+            int maxCamasLivres = unidadeCandidata.Cama.Where(c => c.Livre).Count(); 
+
+            unidadesCandidatas.Add(ordenadoPorCamaLivre.First());
+
+            int start = 1;
+
+            while(start < ordenadoPorCamaLivre.Count())
+            {
+                if (ordenadoPorCamaLivre[start].Cama.Where(c => c.Livre).Count() == maxCamasLivres) 
+                {
+                    unidadesCandidatas.Add(ordenadoPorCamaLivre[start]);
+                    start++;
+                }
+                else
+                    break;
+            }
+
+            if (unidadesCandidatas.Count() == 1)
+                return unidadesCandidatas.First();
+
+            List<Tuple<double, UnidadeClinica>> distancias = new List<Tuple<double, UnidadeClinica>>(); //lista com a distancia que tem do doente e a unidade clinica lado a lado
+
+            foreach (UnidadeClinica unidadeClinica in unidadesCandidatas)
+            {
+                distancias.Add(new Tuple<double, UnidadeClinica>(
+                    GeoCoordinates.DistanceTo(unidadeClinica.Morada.Coordenadas, registo.Doente.Morada.Coordenadas),
+                    unidadeClinica));
+
+            }
+
+            return distancias.OrderBy(tuple => tuple.Item1).First().Item2; //item 1 é a distancia, item 2 é a unidade clinica
+        }
+
+        public List<UnidadeClinica> UnidadesDistrito (List<UnidadeClinica> unidades, Distrito distrito) //
+        {
+           return unidades.Where(u => u.Morada.Distrito.Equals(distrito)).ToList();
+
+        }
+        public List<UnidadeClinica> UnidadesRegiao(List<UnidadeClinica> unidades, Regiao regiao) //
+        {
+           return unidades.Where(u => u.Morada.Regiao.Equals(regiao)).ToList();
+
+        }
+        public void ListarUnidadesDistrito(List<UnidadeClinica> unidades, Distrito distrito)
+        {
+
+            List<UnidadeClinica> unidadesDistrito = UnidadesDistrito(unidades, distrito);
+            int camasLivres = 0;
+
+            foreach (UnidadeClinica unidade in unidadesDistrito)
+            {
+                camasLivres += unidade.Cama.Where(c => c.Livre).Count();
+
+            }
+
+            Console.WriteLine($"Relatorio de ocupacao do distrito {distrito}:\n");
+            Console.WriteLine($"Camas disponiveis -> {camasLivres}");
+            Console.WriteLine($"Numero de unidades -> {unidadesDistrito.Count}");
+        }
+
+        public void ListarUnidadesRegiao(List<UnidadeClinica> unidades, Regiao regiao)
+        {
+
+            List<UnidadeClinica> unidadesRegiao = UnidadesRegiao(unidades, regiao);
+            int camasLivres = 0;
+
+            foreach (UnidadeClinica unidade in unidadesRegiao)
+            {
+                camasLivres += unidade.Cama.Where(c => c.Livre).Count();
+
+            }
+
+            Console.WriteLine($"Relatorio de ocupacao da regiao {regiao}:\n");
+            Console.WriteLine($"Camas disponiveis -> {camasLivres}");
+            Console.WriteLine($"Numero de unidades -> {unidadesRegiao.Count}");
         }
     }
 }
