@@ -24,16 +24,6 @@ namespace RNCCI.Modelos
         public int NumeroUtente { get; private set; }
 
         /// <summary>
-        /// Data de nascimento do doente
-        /// </summary>
-        public DateOnly DataNascimento { get; set; }
-
-        /// <summary>
-        /// sexo do doente
-        /// </summary>
-        public Sexo Sexo { get; set; }
-
-        /// <summary>
         ///  pessoas autorizadas a visita
         /// </summary>
         public Visitante[] VisitantesAutorizados { get; set; }
@@ -48,7 +38,7 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $"\tUtente n{this.NumeroUtente}\n\n" +
-            $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year}anos)\n" +
+            $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year} anos)\n" +
             $"Sexo: {this.Sexo}\n" +
             $"Morada: {this.Morada}\n" +
             $"Numero Telemovel: {this.NumeroTelemovel}" +

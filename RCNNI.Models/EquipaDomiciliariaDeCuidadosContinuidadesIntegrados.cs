@@ -19,7 +19,7 @@ namespace RNCCI.Modelos
         {
             this.NumeroEDCCI += numeroEDCCI;
             this.Cama = new Cama[camasDisponiveis];
-            this.Tipologia = Enums.Tipologia.UnidadeClinica;
+            this.Tipologia = Enums.Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados;
         }
 
         /// <summary>

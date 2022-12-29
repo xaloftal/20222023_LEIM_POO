@@ -125,11 +125,13 @@ namespace RNCCI.Dados
         /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
         private List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
 
+
         /// <summary>
         /// usa este metodo para listar todos os registos
         /// </summary>
         /// <param name="registosClinicos">registos clinicos</param>
         public void ListaTodosRegistos(List<RegistoClinico> registosClinicos) => ListarRegistosClinicos(registosClinicos);
+
 
         /// <summary>
         /// use este metodo para listar os registos de unidades individuais
