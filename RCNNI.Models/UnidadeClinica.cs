@@ -48,9 +48,16 @@ namespace RNCCI.Modelos
         ///// </summary>
         //public Distrito Distrito { get; set; }
 
+
+        /// <summary>
+        /// Morada
+        /// </summary>
         public Morada Morada { get; set; }
 
-        public Regiao Regiao { get; set; }
+        ///// <summary>
+        ///// regiao
+        ///// </summary>
+        //public Regiao Regiao { get; set; }
 
         /// <summary>
         /// Tipologia de resposta

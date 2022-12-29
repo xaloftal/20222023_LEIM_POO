@@ -11,7 +11,7 @@ namespace RNCCI.Dados
 {
     public class RegistosClinicos
     {
-
+        //variaveis
         List<RegistoClinico> registosClinicos = new List<RegistoClinico>();
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace RNCCI.Dados
         /// <param name="registoClinico">um registo clinico</param>
         /// <exception cref="DadosNulosException">quando o registoClinico é nulo</exception>
         /// <exception cref="DadoNaoExisteException">quando o registoClinico não é nulo</exception>
-        public void Delete(RegistoClinico registoClinico)
+        public void Apaga(RegistoClinico registoClinico)
         {
             //não pode ser nulo
             if (registoClinico is null)
@@ -89,7 +89,7 @@ namespace RNCCI.Dados
         /// <param name="registoClinico">um registo clinico</param>
         /// <exception cref="DadosNulosException">quando o registoClinico não existe</exception>
         /// <exception cref="DadoNaoExisteException">quando o registoClinico não é nulo</exception>
-        public void Update(RegistoClinico registoClinico)
+        public void Atualiza(RegistoClinico registoClinico)
         {
             //não pode ser nulo
             if (registoClinico is null)

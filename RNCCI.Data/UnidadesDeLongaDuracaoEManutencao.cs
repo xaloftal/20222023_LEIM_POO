@@ -14,6 +14,12 @@ namespace RNCCI.Dados
         //variaveis
         List<UnidadeDeLongaDuracaoEManutencao> unidadesULDM = new List<UnidadeDeLongaDuracaoEManutencao>();
 
+        /// <summary>
+        /// adiciona uma unidade no sistema
+        /// </summary>
+        /// <param name="novaUnidade">nova unidade a ser adicionada</param>
+        /// <exception cref="DadosNulosException">novaUnidade e nulo</exception>
+        /// <exception cref="DadoJaExisteException">unidade ja existe no sistema</exception>
         public void Add(UnidadeDeLongaDuracaoEManutencao novaUnidade)
         {
             //não pode ser nulo
@@ -28,7 +34,13 @@ namespace RNCCI.Dados
             this.unidadesULDM.Add(novaUnidade);
         }
 
-        public void Delete(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        /// <summary>
+        /// metodo para apagar unidades no sistema
+        /// </summary>
+        /// <param name="unidadeULDM">unidade a eliminar</param>
+        /// <exception cref="DadosNulosException">unidadeULDM e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade a eliminar nao existe no sistema</exception>
+        public void Apaga(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
         {
             //não pode ser nulo
             if (unidadeULDM is null)
@@ -45,7 +57,13 @@ namespace RNCCI.Dados
             unidadesULDM.RemoveAt(index);
         }
 
-        public void Update(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
+        /// <summary>
+        /// metodo para atualizar os dados de unidades
+        /// </summary>
+        /// <param name="unidadeULDM">unidade com as informacoes atualizadas</param>
+        /// <exception cref="DadosNulosException">unidadeULDM e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade a atualizar nao existe no sistema</exception>
+        public void Atualiza(UnidadeDeLongaDuracaoEManutencao unidadeULDM)
         {
             //não pode ser nulo
             if (unidadeULDM is null)

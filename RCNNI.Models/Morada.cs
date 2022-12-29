@@ -10,7 +10,7 @@ using RNCCI.Excecoes;
 
 namespace RNCCI.Modelos
 {
-    public class Morada
+    public abstract class Morada
     {
         //variaveis
         
@@ -82,7 +82,7 @@ namespace RNCCI.Modelos
 
         //metodos
 
-        /*
+        
         
         /// <summary>
         /// método para obter as coordenadas apartir do código postal
@@ -176,7 +176,7 @@ namespace RNCCI.Modelos
             return resposta;   
         }
 
-        */
+        
 
        
     }

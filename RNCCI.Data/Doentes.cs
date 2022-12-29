@@ -35,7 +35,13 @@ namespace RNCCI.Dados
             this.doentes.Add(novoDoente);
         }
 
-        public void Delete(Doente doente)
+        /// <summary>
+        /// elimina doentes do sistema
+        /// </summary>
+        /// <param name="doente">doente a eliminar</param>
+        /// <exception cref="DadosNulosException">doente e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">doente nao existe no sistema</exception>
+        public void Apaga(Doente doente)
         {
             //não pode ser nulo
             if (doente is null)
@@ -52,7 +58,14 @@ namespace RNCCI.Dados
             doentes.RemoveAt(index);
         }
 
-        public void Update(Doente doente)
+
+        /// <summary>
+        /// atualizar dados de doentes no sistema
+        /// </summary>
+        /// <param name="doente">doente com informacoes novas</param>
+        /// <exception cref="DadosNulosException">doente e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">doente nao existe no sistema</exception>
+        public void Atualiza(Doente doente)
         {
             //não pode ser nulo
             if (doente is null)
@@ -69,6 +82,10 @@ namespace RNCCI.Dados
             doentes[index] = doente;
         }
 
+        /// <summary>
+        /// lista na consola todos os doentes registados no sistema
+        /// </summary>
+        /// <param name="doentes"></param>
        public void ListarTodosOsDoentes (List<Doente> doentes)
         {
             foreach (Doente doente in doentes)

@@ -19,6 +19,12 @@ namespace RNCCI.Dados
 
         }
 
+        /// <summary>
+        /// adiciona visitantes a lista
+        /// </summary>
+        /// <param name="novoVisitante">visitante a adicionar</param>
+        /// <exception cref="DadosNulosException">novoVisitante e nulo</exception>
+        /// <exception cref="DadoJaExisteException">visitante ja existe no sistema</exception>
         public void Add(Visitante novoVisitante)
         {
             //não pode ser nulo
@@ -33,7 +39,13 @@ namespace RNCCI.Dados
             this.visitantes.Add(novoVisitante);
         }
 
-        public void Delete(Visitante visitante)
+        /// <summary>
+        /// apaga visitantes do sistema
+        /// </summary>
+        /// <param name="visitante">visitante a eliminar</param>
+        /// <exception cref="DadosNulosException">visitante e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">visitante nao existe no sistema</exception>
+        public void Apaga(Visitante visitante)
         {
             //não pode ser nulo
             if (visitante is null)
@@ -50,6 +62,12 @@ namespace RNCCI.Dados
             visitantes.RemoveAt(index);
         }
 
+        /// <summary>
+        /// atualiza informacoes sobre visitantes
+        /// </summary>
+        /// <param name="visitante">visitante com as informacoes atualizadas</param>
+        /// <exception cref="DadosNulosException">visitante e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">visitante nao existe no sistema</exception>
         public void Update(Visitante visitante)
         {
             //não pode ser nulo

@@ -29,7 +29,7 @@ namespace RNCCI.Dados
         //propriedades
 
         /// <summary>
-        /// Lista todas as unidades de covalescenca
+        /// Lista de todas as unidades de covalescenca
         /// </summary>
         public List<UnidadeDeCovalescenca> ListaUCo => this.unidadesUCo.ToList();
 
@@ -64,7 +64,7 @@ namespace RNCCI.Dados
         /// <param name="unidadeUCo">unidade a ser eliminada</param>
         /// <exception cref="DadosNulosException">se unidadeUCo é nula</exception>
         /// <exception cref="DadoNaoExisteException">se a unidade a ser eliminada não existe</exception>
-        public void Delete(UnidadeDeCovalescenca unidadeUCo)
+        public void Apaga(UnidadeDeCovalescenca unidadeUCo)
         {
             //não pode ser nulo
             if (unidadeUCo is null)
@@ -87,7 +87,7 @@ namespace RNCCI.Dados
         /// <param name="unidadeUCo">unidade com os dados atualizados</param>
         /// <exception cref="DadosNulosException">caso unidadeUCo esteja nula</exception>
         /// <exception cref="DadoNaoExisteException">caso a unidade original não exista</exception>
-        public void Update(UnidadeDeCovalescenca unidadeUCo)
+        public void Atualiza(UnidadeDeCovalescenca unidadeUCo)
         {
             //não pode ser nulo
             if (unidadeUCo is null)
