@@ -9,15 +9,25 @@ namespace RNCCI.Modelos
     public class RegistoDeVisitantes
     {
         //variaveis
-        private int numeroRA=1000;
+        private int numeroRV=1000;
 
         /// <summary>
         /// construtor
         /// </summary>
         /// <param name="visitante">visitante</param>
+        public RegistoDeVisitantes(Visitante visitante, RegistoClinico registoClinico, DateTime entrada, DateTime saida)
+        {
+            this.NumeroRV += numeroRV;
+            this.Visitante = visitante;
+            this.Doente = registoClinico.Doente;
+            this.DataEntrada = entrada;
+            this.DataSaida = saida;
+
+        }
+
         public RegistoDeVisitantes()
         {
-            this.NumeroRA += numeroRA;
+            this.NumeroRV += numeroRV;
 
         }
 
@@ -26,7 +36,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// Numero do registo de Admissoes
         /// </summary>
-        public int NumeroRA { get; private set; }
+        public int NumeroRV { get; private set; }
 
         /// <summary>
         ///Doente referente

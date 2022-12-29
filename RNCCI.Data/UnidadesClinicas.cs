@@ -108,7 +108,39 @@ namespace RNCCI.Dados
             }
         }
 
-       
+        public List<Doente> ListaTodosOsDoentesTipologia(List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada)
+
+        {
+            return registosClinicos
+                .Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada))
+                .Select(r => r.Doente).ToList();
+
+        }
+
+        public void ImprimeDoentesCamasLivresTipologia (List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada)
+        {
+            List<Doente> doentes = this.ListaTodosOsDoentesTipologia(registosClinicos,unidadeFiltrada);
+
+            foreach(Doente doente in doentes)
+            {
+                Console.WriteLine(doentes.ToString());
+            }
+
+            List<RegistoClinico> registosClinicosFiltrados = registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
+            List<UnidadeClinica> unidadesClinicasAgrupadasNumero = registosClinicosFiltrados
+                .GroupBy(r => r.UnidadeClinica.NumeroClinica) //agrupamos por n de clinica
+                .Select(r => r.First()) //buscar primeiro elemento da lista (o resto n importa pq sao iguais)
+                .Select(r => r.UnidadeClinica) //buscar a unidade do registo clinico
+                .ToList();
+
+            foreach(UnidadeClinica unidadeClinica in unidadesClinicasAgrupadasNumero)
+            {
+                Console.WriteLine(unidadeClinica.ToString());
+            }
+
+        }
+
+
 
     }
 }

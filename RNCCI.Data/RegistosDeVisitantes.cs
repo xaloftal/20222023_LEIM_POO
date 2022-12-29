@@ -41,42 +41,42 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //nao pode existir
-            if (this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(novoRegistoDeVisitantes.NumeroRA)))
+            if (this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(novoRegistoDeVisitantes.NumeroRV)))
                 throw new DadoJaExisteException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //adiciona
             this.registosDeVisitantes.Add(novoRegistoDeVisitantes);
         }
 
-        public void Delete(RegistoDeVisitantes registoDeVisitantes)
+        public void Apaga(RegistoDeVisitantes registoDeVisitantes)
         {
             //não pode ser nulo
             if (registoDeVisitantes is null)
-                throw new DadosNulosException("RNCCI.Dados.Doentes.Delete");
+                throw new DadosNulosException("RNCCI.Dados.RegistoDeVisitantes.Delete");
 
             //tem de existir
-            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Delete");
+            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistoDeVisitantes.Delete");
 
             //encontra na lista
-            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA));
+            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV));
 
             //apaga
             registosDeVisitantes.RemoveAt(index);
         }
 
-        public void Update(RegistoDeVisitantes registoDeVisitantes)
+        public void Atualiza(RegistoDeVisitantes registoDeVisitantes)
         {
             //não pode ser nulo
             if (registoDeVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //tem de existir
-            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA)))
+            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV)))
                 throw new DadoNaoExisteException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //encontra na lista
-            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA));
+            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV));
 
             //atualiza a unidade
             registosDeVisitantes[index] = registoDeVisitantes;
@@ -90,6 +90,17 @@ namespace RNCCI.Dados
             }
         }
 
+        public void RegistarAdmissao (RegistoClinico doente, Visitante visitante, DateTime entrada, DateTime saida)
+        {
+            bool autorizado = doente.Doente.VisitantesAutorizados.ToList().Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante));
+
+            if(!autorizado)
+                throw new VisitanteNaoAutorizadoException("RNCCI.Dados.RegistosDeVisitantes.RegistarAdmissao");
+
+            RegistoDeVisitantes registoDeVisitantes = new RegistoDeVisitantes(visitante, doente, entrada, saida);
+            Add(registoDeVisitantes);
+
+        }
 
     }
 }

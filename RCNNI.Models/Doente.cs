@@ -15,12 +15,12 @@ namespace RNCCI.Modelos
         /// <summary>
         /// constructor
         /// </summary>
-        public Doente() => this.NumeroUtente += numeroUtente;
+        public Doente() => this.NumeroUtente += numeroUtente; //voltamos a isto
         
 
         /// <summary>
                  /// Numero de utente de saude
-                 /// </summary>
+                /// </summary>
         public int NumeroUtente { get; private set; }
 
         /// <summary>
