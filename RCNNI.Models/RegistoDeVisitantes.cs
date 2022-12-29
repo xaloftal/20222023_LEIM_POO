@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RNCCI.Modelos
 {
-    public class RegistoDeAdmissoes
+    public class RegistoDeVisitantes
     {
         //variaveis
         private int numeroRA=1000;
@@ -15,10 +15,10 @@ namespace RNCCI.Modelos
         /// construtor
         /// </summary>
         /// <param name="visitante">visitante</param>
-        public RegistoDeAdmissoes(Visitante visitante)
+        public RegistoDeVisitantes()
         {
             this.NumeroRA += numeroRA;
-            this.Visitante = visitante;
+
         }
 
         //propriedades
@@ -37,6 +37,8 @@ namespace RNCCI.Modelos
         /// Visitante
         /// </summary>
         public Visitante Visitante { get; set; }
+
+        public UnidadeClinica UnidadeClinica { get; set; }
 
         /// <summary>
         /// Data e hora de entrada
