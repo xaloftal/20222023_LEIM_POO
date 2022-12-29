@@ -109,6 +109,12 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
         /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
-        public List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
+
+        public List<UnidadeDeCovalescenca> ListaTodosOsDoentesUnidadeCovalescença (List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();)
+        {
+            
+
+        }
+        
     }
 }

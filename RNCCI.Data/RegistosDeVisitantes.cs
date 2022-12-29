@@ -20,8 +20,9 @@ namespace RNCCI.Dados
             {
                 Visitante = new Visitante
                 {
-                    Nome = "Vida",
-                    Tipologia = Tipologia.UnidadeDeMediaDuracaoEReabilitacao
+                    Nome = "Maria Figueiras",
+                    NumeroContribuinte = 4375,
+                    NumeroTelemovel = 934659324
                 },
                 Doente = new Doente
                 {
@@ -30,64 +31,65 @@ namespace RNCCI.Dados
                     NumeroTelemovel = 934656324
                 }
             });
-            registosDeVisitantes.Add(new RegistoDeVisitantes { });
 
         }
 
-        public void Add(Doente novoDoente)
+        public void Add(RegistoDeVisitantes novoRegistoDeVisitantes)
         {
             //não pode ser nulo
-            if (novoDoente is null)
+            if (novoRegistoDeVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.Doentes.Add");
 
             //nao pode existir
-            if (this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(novoDoente.NumeroUtente)))
+            if (this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(novoRegistoDeVisitantes.NumeroRA)))
                 throw new DadoJaExisteException("RNCCI.Dados.Doentes.Add");
 
             //adiciona
-            this.doentes.Add(novoDoente);
+            this.registosDeVisitantes.Add(novoRegistoDeVisitantes);
         }
 
-        public void Delete(Doente doente)
+        public void Delete(RegistoDeVisitantes registoDeVisitantes)
         {
             //não pode ser nulo
-            if (doente is null)
+            if (registoDeVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.Doentes.Delete");
 
             //tem de existir
-            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
+            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA)))
                 throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Delete");
 
             //encontra na lista
-            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
+            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA));
 
             //apaga
-            doentes.RemoveAt(index);
+            registosDeVisitantes.RemoveAt(index);
         }
 
-        public void Update(Doente doente)
+        public void Update(RegistoDeVisitantes registoDeVisitantes)
         {
             //não pode ser nulo
-            if (doente is null)
+            if (registoDeVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.Doentes.Update");
 
             //tem de existir
-            if (!this.doentes.Exists(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente)))
+            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA)))
                 throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Update");
 
             //encontra na lista
-            int index = doentes.FindIndex(ldm => ldm.NumeroUtente.Equals(doente.NumeroUtente));
+            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA));
 
             //atualiza a unidade
-            doentes[index] = doente;
+            registosDeVisitantes[index] = registoDeVisitantes;
         }
 
-        public void ListarTodosOsDoentes(List<Doente> doentes)
+        public void ListarTodosOsRegistoDeVisitantes(List<RegistoDeVisitantes> registosDeVisitantes)
         {
-            foreach (Doente doente in doentes)
+            foreach (RegistoDeVisitantes registoDeVisitantes in registosDeVisitantes)
             {
-                Console.WriteLine(doentes.ToString());
+                Console.WriteLine(registosDeVisitantes.ToString());
             }
         }
+
+
     }
 }

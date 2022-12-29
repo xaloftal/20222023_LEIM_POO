@@ -48,7 +48,7 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $"\tUtente n{this.NumeroUtente}\n\n" +
-            $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year}anos)\n" +
+            $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year} anos)\n" +
             $"Sexo: {this.Sexo}\n" +
             $"Morada: {this.Morada}\n" +
             $"Numero Telemovel: {this.NumeroTelemovel}" +

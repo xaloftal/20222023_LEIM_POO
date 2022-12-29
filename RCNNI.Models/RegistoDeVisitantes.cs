@@ -38,6 +38,8 @@ namespace RNCCI.Modelos
         /// </summary>
         public Visitante Visitante { get; set; }
 
+        public UnidadeClinica UnidadeClinica { get; set; }
+
         /// <summary>
         /// Data e hora de entrada
         /// </summary>
