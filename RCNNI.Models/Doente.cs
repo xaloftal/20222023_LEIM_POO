@@ -41,7 +41,7 @@ namespace RNCCI.Modelos
             $"Nome: {this.Nome}\nData de nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year} anos)\n" +
             $"Sexo: {this.Sexo}\n" +
             $"Morada: {this.Morada}\n" +
-            $"Numero Telemovel: {this.NumeroTelemovel}" +
-            $"Visitantes autorizados: {this.VisitantesAutorizados}";        
+            $"Numero Telemovel: {this.NumeroTelemovel}\n\n" +
+            $"Visitantes autorizados: {this.VisitantesAutorizados}\n\n\n";        
     }
 }

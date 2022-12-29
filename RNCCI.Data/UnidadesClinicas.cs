@@ -56,7 +56,7 @@ namespace RNCCI.Dados
         /// <param name="unidadeC">unidade clinica a ser eliminada</param>
         /// <exception cref="DadosNulosException">unidadeC e nulo</exception>
         /// <exception cref="DadoNaoExisteException">a unidade a ser eliminada nao existe</exception>
-        public void Delete(UnidadeClinica unidadeC)
+        public void Apaga(UnidadeClinica unidadeC)
         {
             //não pode ser nulo
             if (unidadeC is null)
@@ -79,7 +79,7 @@ namespace RNCCI.Dados
         /// <param name="unidadeC">clinica com as informacoes novas a serem atualizadas</param>
         /// <exception cref="DadosNulosException">unidadeC e nulo</exception>
         /// <exception cref="DadoNaoExisteException">a clinica a ser atualizada nao existe</exception>
-        public void Update(UnidadeClinica unidadeC)
+        public void Atualiza(UnidadeClinica unidadeC)
         {
             //não pode ser nulo
             if (unidadeC is null)
@@ -96,6 +96,10 @@ namespace RNCCI.Dados
             unidadesC[index] = unidadeC;
         }
 
+        /// <summary>
+        /// Lista unidades clinicas
+        /// </summary>
+        /// <param name="unidadesC"></param>
         public void ListarTodosOsUnidadesClínicas(List<UnidadeClinica> unidadesC)
         {
             foreach (UnidadeClinica unidadeC in unidadesC)

@@ -22,6 +22,8 @@ namespace RNCCI.Dados
 
         }
 
+        //metodos
+
         /// <summary>
         /// metodo para atribuir o medico a lista das unidades
         /// </summary>
@@ -78,7 +80,7 @@ namespace RNCCI.Dados
         /// <param name="medico"></param>
         /// <exception cref="DadosNulosException">medico a eliminar nulo</exception>
         /// <exception cref="DadoNaoExisteException">medico nao existe no sistema</exception>
-        public void Delete(Medico medico)
+        public void Apaga(Medico medico)
         {
             //não pode ser nulo
             if (medico is null)
@@ -102,7 +104,7 @@ namespace RNCCI.Dados
         /// <param name="medico">medico com os dados atualizados</param>
         /// <exception cref="DadosNulosException">medico nulo</exception>
         /// <exception cref="DadoNaoExisteException">medico a atualizar nao existe</exception>
-        public void Update(Medico medico)
+        public void Atualiza(Medico medico)
         {
             //não pode ser nulo
             if (medico is null)
@@ -119,6 +121,12 @@ namespace RNCCI.Dados
             medicos[index] = medico;
         }
 
+
+
+        /// <summary>
+        /// lista todos os medicos do sistema
+        /// </summary>
+        /// <param name="medicos">medicos do sistema</param>
         public void ListarTodosOsMedicos(List<Medico> medicos)
         {
             foreach (Medico medico in medicos)

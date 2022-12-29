@@ -14,21 +14,34 @@ namespace RNCCI.Dados
         //variaveis
         List<UnidadeDeMediaDuracaoEReabilitacao> unidadesMDR = new List<UnidadeDeMediaDuracaoEReabilitacao>();
 
-        public void Add(UnidadeDeMediaDuracaoEReabilitacao novaClinica)
+
+        /// <summary>
+        /// adiciona uma unidade ao sistema
+        /// </summary>
+        /// <param name="novaUnidade">unidade a atualizar </param>
+        /// <exception cref="DadosNulosException">novaUnidade e nulo</exception>
+        /// <exception cref="DadoJaExisteException">a unidade ja existe no sistema</exception>
+        public void Add(UnidadeDeMediaDuracaoEReabilitacao novaUnidade)
         {
             //não pode ser nulo
-            if (novaClinica is null)
+            if (novaUnidade is null)
                 throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Add");
 
             //nao pode existir
-            if (this.unidadesMDR.Exists(mdr => mdr.NumeroUMDR.Equals(novaClinica.NumeroUMDR)))
+            if (this.unidadesMDR.Exists(mdr => mdr.NumeroUMDR.Equals(novaUnidade.NumeroUMDR)))
                     throw new DadoJaExisteException("RNCCI.Dados.UnidadesClinicas.Add");
 
             //adiciona
-            unidadesMDR.Add(novaClinica);
+            unidadesMDR.Add(novaUnidade);
         }
 
-        public void Delete(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
+        /// <summary>
+        /// eliminar unidades no sistema
+        /// </summary>
+        /// <param name="unidadeUMDR">unidade a eliminar</param>
+        /// <exception cref="DadosNulosException">unidadeUMDR e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade a eliminar nao existe no sistema</exception>
+        public void Apaga(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
         {
             //não pode ser nulo
             if (unidadeUMDR is null)
@@ -45,7 +58,14 @@ namespace RNCCI.Dados
             unidadesMDR.RemoveAt(index);
         }
 
-        public void Update(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
+
+        /// <summary>
+        /// atualiza unidades no sistema
+        /// </summary>
+        /// <param name="unidadeUMDR">unidade com as informacoes atualizadas</param>
+        /// <exception cref="DadosNulosException">unidadeUMDR e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade a atualizar nao existe no sistema</exception>
+        public void Atualiza(UnidadeDeMediaDuracaoEReabilitacao unidadeUMDR)
         {
             //não pode ser nulo
             if (unidadeUMDR is null)

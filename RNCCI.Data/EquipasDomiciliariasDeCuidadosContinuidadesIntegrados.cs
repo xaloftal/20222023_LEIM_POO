@@ -14,7 +14,12 @@ namespace RNCCI.Dados
         //variaveis
         List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados> unidadesDCCI = new List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados>();
 
-
+        /// <summary>
+        /// adiciona unidades ao sistema
+        /// </summary>
+        /// <param name="novaUnidade">unidade a adicionar</param>
+        /// <exception cref="DadosNulosException">novaUnidade e nulo</exception>
+        /// <exception cref="DadoJaExisteException">unidade a adicionar ja existe no sistema</exception>
         public void Add(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados novaUnidade)
         {
             //não pode ser nulo
@@ -28,7 +33,14 @@ namespace RNCCI.Dados
             this.unidadesDCCI.Add(novaUnidade);
         }
 
-        public void Delete(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeDCCI)
+
+        /// <summary>
+        /// elimina unidade do sistema
+        /// </summary>
+        /// <param name="unidadeDCCI">unidade a eliminar</param>
+        /// <exception cref="DadosNulosException">unidadeDCCI e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade a eliminar nao existe no sistema</exception>
+        public void Apaga(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeDCCI)
         {
             //não pode ser nulo
             if (unidadeDCCI is null)
@@ -45,7 +57,13 @@ namespace RNCCI.Dados
             unidadesDCCI.RemoveAt(index);
         }
 
-        public void Update(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeDCCI)
+        /// <summary>
+        /// atualiza a unidade no sistema
+        /// </summary>
+        /// <param name="unidadeDCCI">unidade com as informacoes novas</param>
+        /// <exception cref="DadosNulosException">unidadeDCCI e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">unidade nao existe no sistema</exception>
+        public void Atualiza(EquipaDomiciliariaDeCuidadosContinuidadesIntegrados unidadeDCCI)
         {
             //não pode ser nulo
             if (unidadeDCCI is null)
