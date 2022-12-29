@@ -38,11 +38,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (novoRegistoDeVisitantes is null)
-                throw new DadosNulosException("RNCCI.Dados.Doentes.Add");
+                throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //nao pode existir
             if (this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(novoRegistoDeVisitantes.NumeroRA)))
-                throw new DadoJaExisteException("RNCCI.Dados.Doentes.Add");
+                throw new DadoJaExisteException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //adiciona
             this.registosDeVisitantes.Add(novoRegistoDeVisitantes);
@@ -69,11 +69,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (registoDeVisitantes is null)
-                throw new DadosNulosException("RNCCI.Dados.Doentes.Update");
+                throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //tem de existir
             if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Doentes.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //encontra na lista
             int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRA.Equals(registoDeVisitantes.NumeroRA));
