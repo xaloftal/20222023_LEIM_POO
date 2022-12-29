@@ -108,14 +108,20 @@ namespace RNCCI.Dados
             }
         }
 
-        public List<Doente> ListaTodosOsDoentesTipologia(List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada)
+        public List<Doente> ListaDoenteEstado(List<RegistoClinico> registo, EstadoClinico estado) => registo.Where(r => r.EstadoClinico.Equals(estado)).Select(r => r.Doente).ToList();
 
+
+        public List<Doente> ListaTodosOsDoentesTipologia(List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada) => registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).Select(r => r.Doente).ToList();
+
+
+        public void ImprimeListaEspera(List<RegistoClinico> registo)
         {
-            return registosClinicos
-                .Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada))
-                .Select(r => r.Doente).ToList();
+            List<Doente> doentes = this.ListaDoenteEstado(registo, EstadoClinico.EmEspera);
 
+            foreach (Doente doente in doentes)
+                Console.WriteLine(doentes.ToString());
         }
+
 
         public void ImprimeDoentesCamasLivresTipologia (List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada)
         {
@@ -141,6 +147,10 @@ namespace RNCCI.Dados
         }
 
 
-
+        public UnidadeClinica EscolherUnidade(RegistoClinico registo, Tipologia tipologia)
+        {
+            //filtrar unidades por tipologia
+            //verificar qual unidade 
+        }
     }
 }

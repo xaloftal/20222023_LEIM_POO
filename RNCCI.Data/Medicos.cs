@@ -17,42 +17,13 @@ namespace RNCCI.Dados
 
         public Medicos()
         {
-            medicos.Add(new Medico { Nome = "Jose Maria", NumeroContribuinte = 4325, Especialidade = Tipologia.UnidadeDeMediaDuracaoEReabilitacao});
+            medicos.Add(new Medico { Nome = "Jose Maria", NumeroContribuinte = 4325});
 
 
         }
 
         //metodos
 
-        /// <summary>
-        /// metodo para atribuir o medico a lista das unidades
-        /// </summary>
-        Action<Medico> AtribuirAUnidade { get; set; } = (medico) =>
-        {
-
-            switch (medico.Especialidade)
-            {
-                case Tipologia.UnidadeDeCovalescenca:
-                  //UnidadesDeCovalescenca.Medicos.Add(medico); adicionar medico desta tipologia
-                    break;
-
-                case Tipologia.UnidadeDeMediaDuracaoEReabilitacao:
-
-                    break;
-
-                case Tipologia.UnidadeDeLongaDuracaoEManutencao:
-
-                    break;
-
-                case Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados:
-
-                    break;
-
-                default:
-                    throw new DadoNaoPrevistoException("RNCCI.Data.Medicos.AtribuirAUnidade");
-                    
-            }
-        };
 
         /// <summary>
         /// adiciona um medico novo ao sistema
@@ -132,6 +103,37 @@ namespace RNCCI.Dados
             foreach (Medico medico in medicos)
             {
                 Console.WriteLine(medicos.ToString());
+            }
+        }
+
+
+        public Tipologia EscolherTipologia(RegistoClinico registo)
+        {
+            switch (registo.Diagnostico)
+            {
+                case Doencas.Covid:
+                case Doencas.Pneumonia:
+                case Doencas.Anemia:
+                    return Tipologia.UnidadeDeCovalescenca;
+
+                case Doencas.Zika:
+                case Doencas.HIV:
+                case Doencas.Cancro:
+                    return Tipologia.UnidadeDeLongaDuracaoEManutencao;
+
+                case Doencas.Hepatite:
+                case Doencas.Osteoporose:
+                case Doencas.Diabetes:
+                    return Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados;
+
+
+                case Doencas.InsuficienciaCardiaca:
+                case Doencas.Paralisia:
+                case Doencas.Parkinson:
+                    return Tipologia.UnidadeDeMediaDuracaoEReabilitacao;
+                   
+                default:
+                    throw new DadoNaoPrevistoException("RNCCI.Dados.Medicos.EscolherTipologia");
             }
         }
     }

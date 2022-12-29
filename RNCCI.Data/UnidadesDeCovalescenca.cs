@@ -105,11 +105,7 @@ namespace RNCCI.Dados
         }
 
 
-        public List<UnidadeDeCovalescenca> ListaTodosOsDoentesUnidadeCovalescenca (List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registoClinico.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
-        {
-            
-
-        }
+   
         
     }
 }

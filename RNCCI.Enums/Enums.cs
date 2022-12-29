@@ -21,7 +21,7 @@ namespace RNCCI.Enums
 
     public enum EstadoClinico
     {
-        Internado, Falecido, Alta, EmEspera
+        Internado, Alta, EmEspera
     };
 
     public enum Sexo
@@ -40,6 +40,12 @@ namespace RNCCI.Enums
 
     public enum Doencas
     {
-        Covid
+        Covid, Pneumonia, Cancro, Zika, HIV, Anemia, Hepatite, Osteoporose,
+        InsuficienciaCardiaca, Diabetes, Paralisia, Parkinson
+    }
+
+    public enum Movimento
+    {
+        Saida, Entrada, Transferencia
     }
 }

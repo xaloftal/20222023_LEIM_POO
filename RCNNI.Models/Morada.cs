@@ -83,6 +83,7 @@ namespace RNCCI.Modelos
         //metodos
 
         
+        /*
         
         /// <summary>
         /// método para obter as coordenadas apartir do código postal
@@ -91,20 +92,6 @@ namespace RNCCI.Modelos
         /// <returns>coordenadas</returns>
         public double[] ObterCoordenadas(string codigoPostal)
         {
-            ////cria o cliente
-            //var cliente = new RestClient("htps://nominatim.openstreetmap.org");
-
-            ////criar nova requesicao para procura utilizando o codigo postal
-            ////permite preencher o link para ir procurar pelo codigo postal
-            //var requesicao = new RestRequest("/search", Method.Get);
-            //requesicao.AddParameter("format", "json");
-            //requesicao.AddParameter("limit", "1"); //limite de valores de retorno
-            //requesicao.AddParameter("q", codigoPostal);
-            ////irá ficar um link do tipo https: //nominatim.openstreetmap.org/search?format=json&limit=1&q={codigoPostal}
-
-            ////faz o pedido e tem uma resposta
-            //RestResponse resposta = cliente.Execute(requesicao);
-
             //vai fazer o requesito
             RestResponse resposta = EnviaRequesicao(codigoPostal);
 
@@ -176,7 +163,7 @@ namespace RNCCI.Modelos
             return resposta;   
         }
 
-        
+        */
 
        
     }

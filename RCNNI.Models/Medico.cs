@@ -23,10 +23,8 @@ namespace RNCCI.Modelos
         /// </summary>
         public int CodigoMedico { get; private set; }
 
+        public List<RegistoClinico> ResgistosClinicos { get; set; }
 
-        /// <summary>
-        /// Especialidade do médico
-        /// </summary>
-        public Tipologia Especialidade { get; set; }
+        public List<UnidadeClinica> UnidadeClinicas { get; set; }
     }
 }

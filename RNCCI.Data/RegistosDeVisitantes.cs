@@ -11,9 +11,12 @@ namespace RNCCI.Dados
 {
     public class RegistosDeVisitantes
     {
-
+        //variaveis
         List<RegistoDeVisitantes> registosDeVisitantes = new List<RegistoDeVisitantes>();
 
+        /// <summary>
+        /// construtor
+        /// </summary>
         public RegistosDeVisitantes()
         {
             registosDeVisitantes.Add(new RegistoDeVisitantes
@@ -34,6 +37,12 @@ namespace RNCCI.Dados
 
         }
 
+        /// <summary>
+        /// adiciona um registo de visitantes
+        /// </summary>
+        /// <param name="novoRegistoDeVisitantes"></param>
+        /// <exception cref="DadosNulosException"></exception>
+        /// <exception cref="DadoJaExisteException"></exception>
         public void Add(RegistoDeVisitantes novoRegistoDeVisitantes)
         {
             //não pode ser nulo
@@ -82,6 +91,7 @@ namespace RNCCI.Dados
             registosDeVisitantes[index] = registoDeVisitantes;
         }
 
+
         public void ListarTodosOsRegistoDeVisitantes(List<RegistoDeVisitantes> registosDeVisitantes)
         {
             foreach (RegistoDeVisitantes registoDeVisitantes in registosDeVisitantes)
@@ -89,6 +99,7 @@ namespace RNCCI.Dados
                 Console.WriteLine(registosDeVisitantes.ToString());
             }
         }
+
 
         public void RegistarAdmissao (RegistoClinico doente, Visitante visitante, DateTime entrada, DateTime saida)
         {
