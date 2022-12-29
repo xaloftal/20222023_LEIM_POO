@@ -29,5 +29,7 @@ namespace RNCCI.Dados
             cama.Doente = null;
             cama.Livre = true;
         };
+
+
     }
 }
