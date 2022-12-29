@@ -12,10 +12,17 @@ namespace RNCCI.Modelos
     /// </summary>
     public class Cama
     {
+        //variaveis
+        private int numeroCama = 1000;
+
         /// <summary>
         /// Construtor
         /// </summary>
-        public Cama() => this.Livre = true;         
+        public Cama()
+        {
+            this.Livre = true;
+            this.NumeroCama = numeroCama++;
+        }
 
 
         //propriedades
@@ -24,6 +31,8 @@ namespace RNCCI.Modelos
         /// Doente correspondente
         /// </summary>
         public Doente Doente { get; set; }
+
+        public int NumeroCama { get; set; }
 
         /// <summary>
         /// Data e Hora do internamento do doente correspondente

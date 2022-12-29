@@ -82,11 +82,5 @@ namespace RNCCI.Dados
             unidadesMDR[index] = unidadeUMDR;
         }
 
-        /// <summary>
-        /// Cria a lista os doentes, as unidades e tipologias e a quantidade de camas disponíveis nestes
-        /// </summary>
-        /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
-        /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
-        private List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
     }
 }

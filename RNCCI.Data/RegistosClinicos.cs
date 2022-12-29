@@ -13,6 +13,7 @@ namespace RNCCI.Dados
     {
         //variaveis
         List<RegistoClinico> registosClinicos = new List<RegistoClinico>();
+        RegistosDeMovimentos registosDeMovimentos = new RegistosDeMovimentos();
 
         /// <summary>
         /// construtor
@@ -60,6 +61,7 @@ namespace RNCCI.Dados
             this.registosClinicos.Add(novoRegistoClinico);
         }
 
+
         /// <summary>
         /// Eliminar um registo clinico
         /// </summary>
@@ -82,6 +84,7 @@ namespace RNCCI.Dados
             //apaga
             registosClinicos.RemoveAt(index);
         }
+
 
         /// <summary>
         /// Atualizar um registo clinico
@@ -116,6 +119,101 @@ namespace RNCCI.Dados
             {
                 Console.WriteLine(registoClinicos.ToString());
             }
+        }
+
+        /// <summary>
+        /// Cria a lista os doentes, as unidades e tipologias e a quantidade de camas disponíveis nestes
+        /// </summary>
+        /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
+        /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
+        private List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
+
+
+        /// <summary>
+        /// usa este metodo para listar todos os registos
+        /// </summary>
+        /// <param name="registosClinicos">registos clinicos</param>
+        public void ListaTodosRegistos(List<RegistoClinico> registosClinicos) => ListarRegistosClinicos(registosClinicos);
+
+
+        /// <summary>
+        /// use este metodo para listar os registos de unidades individuais
+        /// </summary>
+        /// <param name="registosClinicos">registos clinicos</param>
+        /// <param name="tipologiaAFiltrar">unidade a filtrar</param>
+        public void ListaRegistosPorTipologia (List<RegistoClinico> registosClinicos, Tipologia tipologiaAFiltrar)
+        {
+            //filtra a lista
+            List<RegistoClinico> registoFiltrado = ListaTodosOsDoentesTipologia(registosClinicos, tipologiaAFiltrar);
+
+            //Listar os registos ja filtrados
+            ListarRegistosClinicos(registoFiltrado);
+        }
+
+
+        public void RegistaAdmissao(RegistoClinico registoClinico, UnidadeClinica unidadeClinica, DateTime entrada)
+        {
+            //mudar unidade clinica
+            registoClinico.UnidadeClinica = unidadeClinica;
+
+            //mudar estado clinico do doente
+            switch (unidadeClinica.Tipologia)
+            {
+                case Tipologia.UnidadeDeCovalescenca:
+                case Tipologia.UnidadeDeMediaDuracaoEReabilitacao:
+                case Tipologia.UnidadeDeLongaDuracaoEManutencao:
+                case Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados:
+                    registoClinico.EstadoClinico = EstadoClinico.Internado;
+                    break;
+
+                case Tipologia.UnidadeClinica:
+                    registoClinico.EstadoClinico = EstadoClinico.EmEspera;
+                    break;
+
+                default:
+                    throw new DadoNaoPrevistoException("RNCCI.Dados.RegistosClinicos.RegistaAdmissao");
+                    break;
+            }
+
+            //inserir no registo de movimentos
+            this.registosDeMovimentos.Add( new RegistoDeMovimento { TipoMovimento = Movimento.Entrada, DataMovimento = entrada, Doente = registoClinico.Doente, Destino = unidadeClinica});
+        }
+
+
+        public void RegistaSaida(RegistoClinico registoClinico, DateTime saida)
+        {
+            registoClinico.UnidadeClinica = null;
+            registoClinico.EstadoClinico = EstadoClinico.Alta;
+            this.registosDeMovimentos.Add(new RegistoDeMovimento { TipoMovimento = Movimento.Saida, DataMovimento = saida, Doente = registoClinico.Doente});
+        }
+
+        public void RegistaTransferencia(RegistoClinico registoClinico, DateTime transferencia, UnidadeClinica unidadeOrigem, UnidadeClinica unidadeDestino)
+        {
+            //mudar unidade clinica
+            registoClinico.UnidadeClinica = unidadeDestino;
+
+            //mudar estado clinico do doente
+            switch (unidadeDestino.Tipologia)
+            {
+                case Tipologia.UnidadeDeCovalescenca:
+
+                case Tipologia.UnidadeDeMediaDuracaoEReabilitacao:
+
+                case Tipologia.UnidadeDeLongaDuracaoEManutencao:
+
+                case Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados:
+                    registoClinico.EstadoClinico = EstadoClinico.Internado;
+                    break;
+                case Tipologia.UnidadeClinica:
+                    registoClinico.EstadoClinico = EstadoClinico.EmEspera;
+                    break;
+                default:
+                    throw new DadoNaoPrevistoException("RNCCI.Dados.RegistosClinicos.RegistaAdmissao");
+                    break;
+            }
+
+            //inserir no registo de movimentos
+            this.registosDeMovimentos.Add(new RegistoDeMovimento { TipoMovimento = Movimento.Entrada, DataMovimento = transferencia, Doente = registoClinico.Doente, Destino = unidadeDestino, Origem = unidadeOrigem });
         }
 
     }
