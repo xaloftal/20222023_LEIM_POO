@@ -26,5 +26,12 @@ namespace RNCCI.Modelos
         /// numero da unidade de media duracao e reabilitacao
         /// </summary>
         public int NumeroUMDR { get; private set; }
+
+        public override string ToString()
+        {
+            int camasLivres = this.Cama.Where(c => c.Livre).Count();
+
+            return $"\tNumero clinica UMDR n{this.NumeroUMDR}\n\n" + base.ToString();
+        }
     }
 }

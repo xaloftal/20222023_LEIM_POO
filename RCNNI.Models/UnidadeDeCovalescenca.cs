@@ -41,5 +41,12 @@ namespace RNCCI.Modelos
         /// numero da unidade de covalescenca
         /// </summary>
         public int NumeroUC { get; private set; }
+
+        public override string ToString()
+        {
+            int camasLivres = this.Cama.Where(c => c.Livre).Count();
+
+            return $"\tNumero clinica UC n{this.NumeroUC}\n\n" + base.ToString();
+        }
     }
 }

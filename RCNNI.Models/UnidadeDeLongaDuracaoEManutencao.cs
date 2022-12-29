@@ -29,5 +29,12 @@ namespace RNCCI.Modelos
         /// Numero da unidade de longa duracao e manutencao
         /// </summary>
         public int NumeroULDM { get; private set; }
+
+        public override string ToString()
+        {
+            int camasLivres = this.Cama.Where(c => c.Livre).Count();
+
+            return $"\tNumero clinica ULDM n{this.NumeroULDM}\n\n" + base.ToString();
+        }
     }
 }

@@ -63,5 +63,16 @@ namespace RNCCI.Modelos
         /// Tipologia de resposta
         /// </summary>
         public Tipologia Tipologia { get; set; }
+
+
+        public override string ToString()
+        {
+            int camasLivres = this.Cama.Where(c => c.Livre).Count();
+
+            return $"\tNumero clinica n{this.NumeroClinica}\n\n" +
+            $"Nome: {this.Nome}" +
+            $"Morada: {this.Morada}\n" +
+            $"Camas disponiveis: {camasLivres}\n\n\n";
+        }
     }
 }

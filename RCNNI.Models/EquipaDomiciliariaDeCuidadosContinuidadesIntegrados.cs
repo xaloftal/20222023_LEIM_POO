@@ -26,5 +26,12 @@ namespace RNCCI.Modelos
         /// numero da equipa domiciliaria de cuidados continuidades integrados
         /// </summary>
         public int NumeroEDCCI { get; set; }
+
+        public override string ToString()
+        {
+            int camasLivres = this.Cama.Where(c => c.Livre).Count();
+
+            return $"\tNumero clinica EDCCi n{this.NumeroEDCCI}\n\n" + base.ToString();
+        }
     }
 }
