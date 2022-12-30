@@ -20,10 +20,9 @@ namespace RNCCI.Dados
         /// </summary>
         public RegistosClinicos()
         {
-
             registosClinicos.Add(new RegistoClinico
             {
-                Diagnostico = Enums.Doencas.Covid,
+                Diagnostico = Enums.Doenca.Covid,
                 DataAdmissao = new DateOnly(2020, 1, 1),
                 EstadoClinico = Enums.EstadoClinico.Internado,
                 UnidadeClinica = new UnidadeClinica
@@ -41,6 +40,8 @@ namespace RNCCI.Dados
 
         }
 
+        //metodos
+
         /// <summary>
         /// Adicionar novo registo clinico
         /// </summary>
@@ -54,12 +55,13 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Add");
 
             //nao pode existir
-            if (this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto)))
+            if (this.registosClinicos.Exists(rc => rc.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto)))
                 throw new DadoJaExisteException("RNCCI.Dados.RegistosClinicos.Add");
 
             //adiciona
             this.registosClinicos.Add(novoRegistoClinico);
         }
+
 
 
         /// <summary>
@@ -72,18 +74,19 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (registoClinico is null)
-                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Delete");
+                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Apaga");
 
             //tem de existir
-            if (!this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
-                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Delete");
+            if (!this.registosClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Apaga");
 
             //encontra na lista
-            int index = registosClinicos.FindIndex(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
+            int index = registosClinicos.FindIndex(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
 
             //apaga
             registosClinicos.RemoveAt(index);
         }
+
 
 
         /// <summary>
@@ -96,37 +99,39 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (registoClinico is null)
-                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Update");
+                throw new DadosNulosException("RNCCI.Dados.RegistosClinicos.Atualiza");
 
             //tem de existir
-            if (!this.registosClinicos.Exists(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
-                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Update");
+            if (!this.registosClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistosClinicos.Atualiza");
 
             //encontra na lista
-            int index = registosClinicos.FindIndex(ldm => ldm.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
+            int index = registosClinicos.FindIndex(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
 
             //atualiza a unidade
             registosClinicos[index] = registoClinico;
         }
 
+
+
         /// <summary>
-        /// Lista todos os registos clinicos
+        /// Lista registos clinicos
         /// </summary>
-        /// <param name="registoClinicos">todos os registos clinicos</param>
-        private void ListarRegistosClinicos(List<RegistoClinico> registoClinicos)
+        /// <param name="registoClinicos"> registos clinicos</param>
+        public void ListarRegistosClinicos(List<RegistoClinico> registoClinicos)
         {
             foreach (RegistoClinico registoClinico in registoClinicos)
-            {
                 Console.WriteLine(registoClinicos.ToString());
-            }
         }
 
         /// <summary>
         /// Cria a lista os doentes, as unidades e tipologias e a quantidade de camas disponíveis nestes
         /// </summary>
         /// <param name="unidadeFiltrada">unidade correspondente à do doente</param>
-        /// <returns>retorna a lista de todos os doentes filtrados por tipologia</returns>
-        private List<RegistoClinico> ListaTodosOsDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).ToList();
+        /// <returns>lista de todos os doentes filtrados por tipologia</returns>
+        public List<RegistoClinico> ListaTodosDoentesTipologia(List<RegistoClinico> registoClinico, Tipologia unidadeFiltrada) => this.registosClinicos
+                                                                                                                                .Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada))
+                                                                                                                                .ToList();
 
 
         /// <summary>
@@ -134,6 +139,8 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="registosClinicos">registos clinicos</param>
         public void ListaTodosRegistos(List<RegistoClinico> registosClinicos) => ListarRegistosClinicos(registosClinicos);
+
+
 
 
         /// <summary>
@@ -144,13 +151,21 @@ namespace RNCCI.Dados
         public void ListaRegistosPorTipologia (List<RegistoClinico> registosClinicos, Tipologia tipologiaAFiltrar)
         {
             //filtra a lista
-            List<RegistoClinico> registoFiltrado = ListaTodosOsDoentesTipologia(registosClinicos, tipologiaAFiltrar);
+            List<RegistoClinico> registoFiltrado = ListaTodosDoentesTipologia(registosClinicos, tipologiaAFiltrar);
 
             //Listar os registos ja filtrados
             ListarRegistosClinicos(registoFiltrado);
         }
 
 
+
+        /// <summary>
+        /// regista a admissao do doente na unidade clinica
+        /// </summary>
+        /// <param name="registoClinico">registo do doente a ser admitido</param>
+        /// <param name="unidadeClinica">unidade a ser admitido</param>
+        /// <param name="entrada">data de entrada do doente</param>
+        /// <exception cref="DadoNaoPrevistoException">tipologia de resposta nao esperada</exception>
         public void RegistaAdmissao(RegistoClinico registoClinico, UnidadeClinica unidadeClinica, DateTime entrada)
         {
             //mudar unidade clinica
@@ -180,13 +195,33 @@ namespace RNCCI.Dados
         }
 
 
+
+        /// <summary>
+        /// regista a saida do doente 
+        /// </summary>
+        /// <param name="registoClinico">registo do doente</param>
+        /// <param name="saida">data de saida</param>
         public void RegistaSaida(RegistoClinico registoClinico, DateTime saida)
         {
+            //muda a unidade do registo
             registoClinico.UnidadeClinica = null;
+
+            //muda o estado do doente
             registoClinico.EstadoClinico = EstadoClinico.Alta;
+
+            //adiciona aos registos
             this.registosDeMovimentos.Add(new RegistoDeMovimento { TipoMovimento = Movimento.Saida, DataMovimento = saida, Doente = registoClinico.Doente});
         }
 
+
+        /// <summary>
+        /// regista a transferencia entre unidades
+        /// </summary>
+        /// <param name="registoClinico">registo do doente</param>
+        /// <param name="transferencia">data da transferencia</param>
+        /// <param name="unidadeOrigem">unidade clinica de onde vai sair</param>
+        /// <param name="unidadeDestino">unidade clinica onde vai entrar</param>
+        /// <exception cref="DadoNaoPrevistoException">Tipologia de resposta nao esperada</exception>
         public void RegistaTransferencia(RegistoClinico registoClinico, DateTime transferencia, UnidadeClinica unidadeOrigem, UnidadeClinica unidadeDestino)
         {
             //mudar unidade clinica

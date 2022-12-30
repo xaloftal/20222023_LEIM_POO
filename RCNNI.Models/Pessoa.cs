@@ -14,25 +14,28 @@ namespace RNCCI.Modelos
         /// </summary>
         public string Nome { get; set; }
 
+
         /// <summary>
         /// numero de telemovel da pessoa
         /// </summary>
         public int NumeroTelemovel { get; set; }
+
 
         /// <summary>
         /// NIF da pessoa
         /// </summary>
         public int NumeroContribuinte { get; set; }
 
+
         /// <summary>
         /// sexo do doente
         /// </summary>
         public Sexo Sexo { get; set; }
 
+
         /// <summary>
         /// data de nascimento
         /// </summary>
         public DateOnly DataNascimento { get; set; }
-
     }
 }

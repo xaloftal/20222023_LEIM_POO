@@ -14,7 +14,9 @@ namespace RNCCI.Modelos
         /// <summary>
         /// construtor
         /// </summary>
-        public Visitante() => this.NumeroVisitante += numeroVisitante;
+        public Visitante() => this.NumeroVisitante = numeroVisitante++;
+
+        //propriedades
 
         /// <summary>
         /// Doente a visitar
@@ -27,11 +29,16 @@ namespace RNCCI.Modelos
         /// </summary>
         public int NumeroVisitante { get; private set; }
 
+        //metodo
+
+        /// <summary>
+        /// override do metodo ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() => $"\tVisitante nº{this.NumeroVisitante}\n\n" +
             $"Nome: {this.Nome}\n" +
             $"Data de nascimento: {this.DataNascimento} ({2022-this.DataNascimento.Year} anos)\n" +
             $"Sexo: {this.Sexo}\n\n" +
-            $"Doente autorizado a visitar: {this.Doente.Nome} (Utente nº{this.Doente.NumeroUtente})\n\n\n";
-        
+            $"Doente autorizado a visitar: {this.Doente.Nome} (Utente nº{this.Doente.NumeroUtente})\n\n\n";        
     }
 }

@@ -15,7 +15,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// Constructor
         /// </summary>
-        public Medico() => this.CodigoMedico += numeroMedico;
+        public Medico() => this.CodigoMedico = numeroMedico++;
         
         //propriedades
         /// <summary>
@@ -23,8 +23,5 @@ namespace RNCCI.Modelos
         /// </summary>
         public int CodigoMedico { get; private set; }
 
-        public List<RegistoClinico> ResgistosClinicos { get; set; }
-
-        public List<UnidadeClinica> UnidadeClinicas { get; set; }
     }
 }

@@ -9,23 +9,7 @@ using RNCCI.Dados;
 //morada.Cidade = "Avidos";
 //Console.WriteLine($"{morada.Rua}, {morada.CodigoPostal} {morada.Cidade} ( {morada.Coordenadas} )");
 
-Doentes doentes1 = new Doentes();
 
 
 
-static void MenuDoDoente() 
-{
-    Console.WriteLine("---------------MENU DO DOENTE---------------\n");
-    Console.WriteLine("1. Inserção de dados");
-    Console.WriteLine("2. Atualização de dados");
-    Console.WriteLine("3. Eliminação de dados");
-    Console.WriteLine("4. Consultar doentes");
 
-    int opcao = int.Parse(Console.ReadLine());
-
-    switch (opcao)
-    {
-        default:
-            break;
-    }
-}

@@ -21,7 +21,7 @@ namespace RNCCI.Modelos
         /// <param name="camasDisponiveis">camas disponiveis para a unidade</param>
         public UnidadeDeCovalescenca(int camasDisponiveis)
         {
-            this.NumeroUC += numeroUC;
+            this.NumeroUC = numeroUC++;
             this.Cama = new Cama[camasDisponiveis];
             this.Tipologia = Tipologia.UnidadeDeCovalescenca;
         }
@@ -30,6 +30,7 @@ namespace RNCCI.Modelos
         /// Lista de doentes
         /// </summary>
         public List<Doente> Doentes { get; set; }
+
 
         /// <summary>
         /// lista de medicos
@@ -42,6 +43,12 @@ namespace RNCCI.Modelos
         /// </summary>
         public int NumeroUC { get; private set; }
 
+        //metodos
+
+        /// <summary>
+        /// override do metodo ToString();
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             int camasLivres = this.Cama.Where(c => c.Livre).Count();

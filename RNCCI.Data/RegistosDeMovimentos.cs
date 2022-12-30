@@ -14,6 +14,10 @@ namespace RNCCI.Dados
         //variaveis
         List<RegistoDeMovimento> registosMovimentos = new List<RegistoDeMovimento>();
 
+
+        //metodos
+
+
         /// <summary>
         /// adiciona um registo de movimento
         /// </summary>
@@ -33,6 +37,8 @@ namespace RNCCI.Dados
             //adiciona
             this.registosMovimentos.Add(novoRegisto);
         }
+
+
 
         /// <summary>
         ///  elimina um registo de movimento do sistema
@@ -57,12 +63,14 @@ namespace RNCCI.Dados
             registosMovimentos.RemoveAt(index);
         }
 
+
+
         /// <summary>
-        /// 
+        /// atualiza um registo
         /// </summary>
-        /// <param name="registoMovimento"></param>
-        /// <exception cref="DadosNulosException"></exception>
-        /// <exception cref="DadoNaoExisteException"></exception>
+        /// <param name="registoMovimento">registo de movimento com informacoes atualizadas</param>
+        /// <exception cref="DadosNulosException">registoMovimento e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">o registo a atualizar nao existe no sistema</exception>
         public void Atualiza(RegistoDeMovimento registoMovimento)
         {
             //não pode ser nulo
@@ -79,16 +87,24 @@ namespace RNCCI.Dados
             //atualiza a unidade
             registosMovimentos[index] = registoMovimento;
         }
+        
 
+        /// <summary>
+        /// imprimir o estrato de movimentos de um doente
+        /// </summary>
+        /// <param name="registoMovimentos">lista de registos</param>
+        /// <param name="doente">doente a filtrar</param>
         public void ExtratoMovimentosDoente(List<RegistoDeMovimento> registoMovimentos, Doente doente) => ImprimirExtratoMovimentos(this.registosMovimentos.Where(r => r.Doente.NumeroUtente.Equals(doente.NumeroUtente)).ToList());
 
 
-        private void ImprimirExtratoMovimentos(List<RegistoDeMovimento> registoMovimentos )
+        /// <summary>
+        /// imprime na consola extratos de movimentos
+        /// </summary>
+        /// <param name="registoMovimentos">lista de registos de movimentos</param>
+        public void ImprimirExtratoMovimentos(List<RegistoDeMovimento> registoMovimentos )
         {
             foreach (RegistoDeMovimento registo in registoMovimentos)
-            {
                 Console.WriteLine(registoMovimentos.ToString());
-            }
         }
 
     }

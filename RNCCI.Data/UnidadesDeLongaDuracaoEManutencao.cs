@@ -34,6 +34,8 @@ namespace RNCCI.Dados
             this.unidadesULDM.Add(novaUnidade);
         }
 
+
+
         /// <summary>
         /// metodo para apagar unidades no sistema
         /// </summary>
@@ -44,11 +46,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeULDM is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Apaga");
 
             //tem de existir
             if (!this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Apaga");
 
             //encontra na lista
             int index = unidadesULDM.FindIndex(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM));
@@ -56,6 +58,8 @@ namespace RNCCI.Dados
             //apaga
             unidadesULDM.RemoveAt(index);
         }
+
+
 
         /// <summary>
         /// metodo para atualizar os dados de unidades
@@ -67,11 +71,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeULDM is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Atualiza");
 
             //tem de existir
             if (!this.unidadesULDM.Exists(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeLongaDuracaoEManutencao.Atualiza");
 
             //encontra na lista
             int index = unidadesULDM.FindIndex(ldm => ldm.NumeroULDM.Equals(unidadeULDM.NumeroULDM));

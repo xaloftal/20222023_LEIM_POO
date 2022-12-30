@@ -33,8 +33,6 @@ namespace RNCCI.Dados
         /// </summary>
         public List<UnidadeDeCovalescenca> ListaUCo => this.unidadesUCo.ToList();
 
-        public List<Medico> Medicos { get; set; } = new List<Medico>(); //esta parte não tenho certeza
-        public List<Doente> Doentes = new List<Doente>(); //tipo ya, acho que não porque em Medicos não está a dar
 
         //metodos
 
@@ -58,6 +56,8 @@ namespace RNCCI.Dados
             this.unidadesUCo.Add(novaUnidade);
         }
 
+
+
         /// <summary>
         /// usar este metodo para eliminar unidades no sistema
         /// </summary>
@@ -68,11 +68,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeUCo is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeCovalenscenca.Delete");
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeCovalenscenca.Apaga");
 
             //a unidade tem de existir para ser eliminada
             if (!this.unidadesUCo.Exists(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeCovalenscenca.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeCovalenscenca.Apaga");
 
             //encontra o index da unidade na lista
             int index = unidadesUCo.FindIndex(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC));
@@ -80,6 +80,8 @@ namespace RNCCI.Dados
             //remove a unidade
             unidadesUCo.RemoveAt(index);
         }
+
+
 
         /// <summary>
         /// usar este metodo para atualizar unidades de covalescenca
@@ -91,21 +93,18 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeUCo is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadesDeCovalenscenca.Update");
+                throw new DadosNulosException("RNCCI.Dados.UnidadesDeCovalenscenca.Atualiza");
 
             //tem de existir
             if (!this.unidadesUCo.Exists(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeCovalenscenca.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesDeCovalenscenca.Atualiza");
 
             //encontra na lista
             int index = unidadesUCo.FindIndex(co => co.NumeroUC.Equals(unidadeUCo.NumeroUC));
 
             //atualiza a unidade
             unidadesUCo[index] = unidadeUCo;
-        }
-
-
-   
+        }   
         
     }
 }

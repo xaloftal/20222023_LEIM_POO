@@ -35,6 +35,8 @@ namespace RNCCI.Dados
             unidadesMDR.Add(novaUnidade);
         }
 
+
+
         /// <summary>
         /// eliminar unidades no sistema
         /// </summary>
@@ -45,11 +47,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeUMDR is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Delete");
+                throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Apaga");
 
             //tem de existir
             if (!this.unidadesMDR.Exists(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Apaga");
 
             //encontra na lista
             int index = unidadesMDR.FindIndex(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR));
@@ -69,11 +71,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeUMDR is null)
-                throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Update");
+                throw new DadosNulosException("RNCCI.Dados.UnidadeDeMediaDuracaoEReabilitacao.Atualiza");
 
             //tem de existir
             if (!this.unidadesMDR.Exists(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadesClinicas.Atualiza");
 
             //encontra na lista
             int index = unidadesMDR.FindIndex(mdr => mdr.NumeroUMDR.Equals(unidadeUMDR.NumeroUMDR));

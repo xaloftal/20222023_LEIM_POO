@@ -14,6 +14,8 @@ namespace RNCCI.Dados
         //variaveis
         List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados> unidadesDCCI = new List<EquipaDomiciliariaDeCuidadosContinuidadesIntegrados>();
 
+        //metodos
+
         /// <summary>
         /// adiciona unidades ao sistema
         /// </summary>
@@ -34,6 +36,7 @@ namespace RNCCI.Dados
         }
 
 
+
         /// <summary>
         /// elimina unidade do sistema
         /// </summary>
@@ -44,11 +47,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeDCCI is null)
-                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Delete");
+                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Apaga");
 
             //a unidade tem de existir para ser eliminada
             if (!this.unidadesDCCI.Exists(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI)))
-                throw new DadoNaoExisteException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Apaga");
 
             //encontra o index da unidade na lista
             int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI));
@@ -56,6 +59,8 @@ namespace RNCCI.Dados
             //remove a unidade
             unidadesDCCI.RemoveAt(index);
         }
+
+
 
         /// <summary>
         /// atualiza a unidade no sistema
@@ -67,11 +72,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (unidadeDCCI is null)
-                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+                throw new DadosNulosException("RNCCI.Dados.EquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Atualiza");
 
             //tem de existir
             if (!this.unidadesDCCI.Exists(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI)))
-                throw new DadoNaoExisteException("RNCCI.Dados.UnidadeEquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.UnidadeEquipasDominiciliariasDeCuidadosContinuidadesIntegrados.Atualiza");
 
             //encontra na lista
             int index = unidadesDCCI.FindIndex(dcci => dcci.NumeroEDCCI.Equals(unidadeDCCI.NumeroEDCCI));

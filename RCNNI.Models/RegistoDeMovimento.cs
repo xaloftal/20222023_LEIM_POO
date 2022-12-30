@@ -12,24 +12,55 @@ namespace RNCCI.Modelos
     {
         //variaveis
         private int numeroRegisto = 1000;
-        public RegistoDeMovimento()
-        {
-            this.NumeroRegisto = numeroRegisto++;
-        }
 
+        /// <summary>
+        /// construtor
+        /// </summary>
+        public RegistoDeMovimento() => this.NumeroRegisto = numeroRegisto++;
+
+
+        /// <summary>
+        /// numero do registo
+        /// </summary>
         public int NumeroRegisto { get; set; }
 
+
+        /// <summary>
+        /// doente do registo
+        /// </summary>
         public Doente Doente { get; set; }
 
+        
+        /// <summary>
+        /// tipo de movimento
+        /// </summary>
         public Movimento TipoMovimento { get; set; }
 
+
+        /// <summary>
+        /// data do movimento
+        /// </summary>
         public DateTime DataMovimento { get; set; }
 
+        /// <summary>
+        /// unidade clinica de saida
+        /// </summary>
         public UnidadeClinica Origem { get; set; }
 
+
+        /// <summary>
+        /// unidade clinica de entrada
+        /// </summary>
         public UnidadeClinica Destino { get; set; }
 
 
+        //metodo
+
+        /// <summary>
+        /// override do ToString()
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DadoNaoExisteException"></exception>
         public override string ToString()
         {
             string mensagem = $"\tRegisto de movimento n {this.NumeroRegisto}\n" +
@@ -37,6 +68,8 @@ namespace RNCCI.Modelos
             $"Tipo de transferencia: {this.TipoMovimento}\n" +
             $"Data: {this.DataMovimento}\n\n";
 
+
+            //output diferente, conforme o tipo de movimento
             switch (this.TipoMovimento)
             {
                 case Movimento.Saida:                    
@@ -46,7 +79,7 @@ namespace RNCCI.Modelos
                 case Movimento.Transferencia:
                   return mensagem + $"Unidade clinica de origem: {this.Origem} -> Unidade clinica: {this.Destino}";                    
                 default:
-                    throw new DadoNaoExisteException("RNCCI.Modelos.RegistoDeMovimento");                    
+                    throw new DadoNaoPrevistoException("RNCCI.Modelos.RegistoDeMovimento");                    
             }
         }
         
