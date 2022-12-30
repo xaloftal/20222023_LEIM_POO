@@ -61,6 +61,7 @@ namespace RNCCI.Dados
             this.registosDeVisitantes.Add(novoRegistoDeVisitantes);
         }
 
+
         public void Apaga(RegistoDeVisitantes registoDeVisitantes)
         {
             //não pode ser nulo
