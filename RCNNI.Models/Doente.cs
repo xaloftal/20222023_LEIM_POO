@@ -25,18 +25,6 @@ namespace RNCCI.Modelos
 
 
         /// <summary>
-        /// Data de nascimento do doente
-        /// </summary>
-        public DateOnly DataNascimento { get; set; }
-
-
-        /// <summary>
-        /// sexo do doente
-        /// </summary>
-        public Sexo Sexo { get; set; }
-
-
-        /// <summary>
         ///  pessoas autorizadas a visita
         /// </summary>
         public Visitante[] VisitantesAutorizados { get; set; }

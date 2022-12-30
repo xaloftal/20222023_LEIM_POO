@@ -25,6 +25,9 @@ namespace RNCCI.Modelos
 
         }
 
+        /// <summary>
+        /// segundo construtor
+        /// </summary>
         public RegistoDeVisitantes() => this.NumeroRV = numeroRV++;
 
         //propriedades

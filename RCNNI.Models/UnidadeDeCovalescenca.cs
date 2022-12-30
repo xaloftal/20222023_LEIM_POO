@@ -27,18 +27,6 @@ namespace RNCCI.Modelos
         }
 
         /// <summary>
-        /// Lista de doentes
-        /// </summary>
-        public List<Doente> Doentes { get; set; }
-
-
-        /// <summary>
-        /// lista de medicos
-        /// </summary>
-        public List<Medico> Medicos { get; set; }
-        
-
-        /// <summary>
         /// numero da unidade de covalescenca
         /// </summary>
         public int NumeroUC { get; private set; }
