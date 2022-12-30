@@ -15,12 +15,11 @@ namespace RNCCI.Dados
         //variaveis
         List<Medico> medicos = new List<Medico>();
 
-        public Medicos()
-        {
-            medicos.Add(new Medico { Nome = "Jose Maria", NumeroContribuinte = 4325});
+        /// <summary>
+        /// construtor
+        /// </summary>
+        public Medicos() => medicos.Add(new Medico { Nome = "Jose Maria", NumeroContribuinte = 4325 });
 
-
-        }
 
         //metodos
 
@@ -45,6 +44,8 @@ namespace RNCCI.Dados
             this.medicos.Add(novoMedico);
         }
 
+
+
         /// <summary>
         /// eliminar um medico
         /// </summary>
@@ -55,11 +56,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (medico is null)
-                throw new DadosNulosException("RNCCI.Dados.Medicos.Delete");
+                throw new DadosNulosException("RNCCI.Dados.Medicos.Apaga");
 
             //tem de existir
             if (!this.medicos.Exists(m => m.CodigoMedico.Equals(medico.CodigoMedico)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Delete");
+                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Apaga");
 
             //encontra na lista
             int index = medicos.FindIndex(m => m.CodigoMedico.Equals(medico.CodigoMedico));
@@ -67,6 +68,7 @@ namespace RNCCI.Dados
             //apaga
             medicos.RemoveAt(index);
         }
+
 
 
         /// <summary>
@@ -79,11 +81,11 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (medico is null)
-                throw new DadosNulosException("RNCCI.Dados.Medicos.Update");
+                throw new DadosNulosException("RNCCI.Dados.Medicos.Atualiza");
 
             //tem de existir
             if (!this.medicos.Exists(m => m.CodigoMedico.Equals(medico.CodigoMedico)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Update");
+                throw new DadoNaoExisteException("RNCCI.Dados.Medicos.Atualiza");
 
             //encontra na lista
             int index = medicos.FindIndex(m => m.CodigoMedico.Equals(medico.CodigoMedico));
@@ -101,35 +103,39 @@ namespace RNCCI.Dados
         public void ListarTodosOsMedicos(List<Medico> medicos)
         {
             foreach (Medico medico in medicos)
-            {
                 Console.WriteLine(medicos.ToString());
-            }
         }
 
 
+        /// <summary>
+        /// permite escolher a tipologia do doente conforme o seu diagnostico
+        /// </summary>
+        /// <param name="registo">registo do doente</param>
+        /// <returns>tipologia a que o doente vai ser encaminhado</returns>
+        /// <exception cref="DadoNaoPrevistoException">diagnostico nao for um dos previstos</exception>
         public Tipologia EscolherTipologia(RegistoClinico registo)
         {
             switch (registo.Diagnostico)
             {
-                case Doencas.Covid:
-                case Doencas.Pneumonia:
-                case Doencas.Anemia:
+                case Doenca.Covid:
+                case Doenca.Pneumonia:
+                case Doenca.Anemia:
                     return Tipologia.UnidadeDeCovalescenca;
 
-                case Doencas.Zika:
-                case Doencas.HIV:
-                case Doencas.Cancro:
+                case Doenca.Zika:
+                case Doenca.HIV:
+                case Doenca.Cancro:
                     return Tipologia.UnidadeDeLongaDuracaoEManutencao;
 
-                case Doencas.Hepatite:
-                case Doencas.Osteoporose:
-                case Doencas.Diabetes:
+                case Doenca.Hepatite:
+                case Doenca.Osteoporose:
+                case Doenca.Diabetes:
                     return Tipologia.EquipaDomiciliariaDeCuidadosContinuidadesIntegrados;
 
 
-                case Doencas.InsuficienciaCardiaca:
-                case Doencas.Paralisia:
-                case Doencas.Parkinson:
+                case Doenca.InsuficienciaCardiaca:
+                case Doenca.Paralisia:
+                case Doenca.Parkinson:
                     return Tipologia.UnidadeDeMediaDuracaoEReabilitacao;
                    
                 default:

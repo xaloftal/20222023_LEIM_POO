@@ -48,30 +48,36 @@ namespace RNCCI.Modelos
         /// </summary>
         public string Rua { get; set; }
 
+
         /// <summary>
         /// Numero da porta
         /// </summary>
         public int NumeroPorta { get; set; }
+
 
         /// <summary>
         /// Cidade
         /// </summary>
         public string Cidade { get; set; }
 
+
         /// <summary>
         /// Distrito
         /// </summary>
         public Distrito Distrito { get; set; }
+
 
         /// <summary>
         /// codigo postal
         /// </summary>
         public string CodigoPostal { get; set; }
 
+
         /// <summary>
         /// Regiao
         /// </summary>
         public Regiao Regiao { get; private set;}
+
 
         /// <summary>
         /// coordenadas

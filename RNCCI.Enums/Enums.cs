@@ -38,7 +38,7 @@ namespace RNCCI.Enums
         UnidadeClinica
     }
 
-    public enum Doencas
+    public enum Doenca
     {
         Covid, Pneumonia, Cancro, Zika, HIV, Anemia, Hepatite, Osteoporose,
         InsuficienciaCardiaca, Diabetes, Paralisia, Parkinson

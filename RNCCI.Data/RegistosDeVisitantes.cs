@@ -13,14 +13,14 @@ namespace RNCCI.Dados
     public class RegistosDeVisitantes
     {
         //variaveis
-        List<RegistoDeVisitantes> registosDeVisitantes = new List<RegistoDeVisitantes>();
+        List<RegistoDeVisitantes> registosVisitantes = new List<RegistoDeVisitantes>();
 
         /// <summary>
         /// construtor
         /// </summary>
         public RegistosDeVisitantes()
         {
-            registosDeVisitantes.Add(new RegistoDeVisitantes
+            registosVisitantes.Add(new RegistoDeVisitantes
             {
                 Visitante = new Visitante
                 {
@@ -41,128 +41,167 @@ namespace RNCCI.Dados
 
         }
 
+        //metodos
+
+
         /// <summary>
         /// adiciona um registo de visitantes
         /// </summary>
         /// <param name="novoRegistoDeVisitantes"></param>
         /// <exception cref="DadosNulosException"></exception>
         /// <exception cref="DadoJaExisteException"></exception>
-        public void Add(RegistoDeVisitantes novoRegistoDeVisitantes)
+        public void Add(RegistoDeVisitantes novoRegistoVisitantes)
         {
             //não pode ser nulo
-            if (novoRegistoDeVisitantes is null)
+            if (novoRegistoVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //nao pode existir
-            if (this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(novoRegistoDeVisitantes.NumeroRV)))
+            if (this.registosVisitantes.Exists(rv => rv.NumeroRV.Equals(novoRegistoVisitantes.NumeroRV)))
                 throw new DadoJaExisteException("RNCCI.Dados.RegistosDeVisitantes.Add");
 
             //adiciona
-            this.registosDeVisitantes.Add(novoRegistoDeVisitantes);
+            this.registosVisitantes.Add(novoRegistoVisitantes);
         }
 
 
-        public void Apaga(RegistoDeVisitantes registoDeVisitantes)
+        /// <summary>
+        /// apaga um registo do sistema
+        /// </summary>
+        /// <param name="registoVisitantes">registo a eliminar</param>
+        /// <exception cref="DadosNulosException">registoVisitantes e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">registo a eliminar nao existe no sistema</exception>
+        public void Apaga(RegistoDeVisitantes registoVisitantes)
         {
             //não pode ser nulo
-            if (registoDeVisitantes is null)
-                throw new DadosNulosException("RNCCI.Dados.RegistoDeVisitantes.Delete");
+            if (registoVisitantes is null)
+                throw new DadosNulosException("RNCCI.Dados.RegistoDeVisitantes.Apaga");
 
             //tem de existir
-            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV)))
-                throw new DadoNaoExisteException("RNCCI.Dados.RegistoDeVisitantes.Delete");
+            if (!this.registosVisitantes.Exists(rv => rv.NumeroRV.Equals(registoVisitantes.NumeroRV)))
+                throw new DadoNaoExisteException("RNCCI.Dados.RegistoDeVisitantes.Apaga");
 
             //encontra na lista
-            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV));
+            int index = registosVisitantes.FindIndex(rv => rv.NumeroRV.Equals(registoVisitantes.NumeroRV));
 
             //apaga
-            registosDeVisitantes.RemoveAt(index);
+            registosVisitantes.RemoveAt(index);
         }
 
-        public void Atualiza(RegistoDeVisitantes registoDeVisitantes)
+
+        /// <summary>
+        /// atualiza um registo no sistema
+        /// </summary>
+        /// <param name="registoVisitantes">registo com as informacoes atualizadas</param>
+        /// <exception cref="DadosNulosException">registoVisitantes e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">registo a atualizar nao existe no sistema</exception>
+        public void Atualiza(RegistoDeVisitantes registoVisitantes)
         {
             //não pode ser nulo
-            if (registoDeVisitantes is null)
+            if (registoVisitantes is null)
                 throw new DadosNulosException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //tem de existir
-            if (!this.registosDeVisitantes.Exists(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV)))
+            if (!this.registosVisitantes.Exists(rv => rv.NumeroRV.Equals(registoVisitantes.NumeroRV)))
                 throw new DadoNaoExisteException("RNCCI.Dados.RegistosDeVisitantes.Update");
 
             //encontra na lista
-            int index = registosDeVisitantes.FindIndex(ldm => ldm.NumeroRV.Equals(registoDeVisitantes.NumeroRV));
+            int index = registosVisitantes.FindIndex(rv => rv.NumeroRV.Equals(registoVisitantes.NumeroRV));
 
             //atualiza a unidade
-            registosDeVisitantes[index] = registoDeVisitantes;
+            registosVisitantes[index] = registoVisitantes;
         }
 
 
-        public void ListarTodosOsRegistoDeVisitantes(List<RegistoDeVisitantes> registosDeVisitantes)
+        /// <summary>
+        /// lista registos na consola 
+        /// </summary>
+        /// <param name="registosVisitantes">lista de registos a imprimir</param>
+        public void ListarRegistoVisitantes(List<RegistoDeVisitantes> registosVisitantes)
         {
-            foreach (RegistoDeVisitantes registoDeVisitantes in registosDeVisitantes)
-            {
-                Console.WriteLine(registosDeVisitantes.ToString());
-            }
+            foreach (RegistoDeVisitantes registo in registosVisitantes)
+                Console.WriteLine(registosVisitantes.ToString());
         }
 
+
+
+        /// <summary>
+        /// regista a admissao de um visitante
+        /// </summary>
+        /// <param name="doente">doente a visitar</param>
+        /// <param name="visitante">visitante</param>
+        /// <param name="entrada">data e hora que entra</param>
+        /// <param name="saida">data e hora que sai</param>
+        /// <exception cref="VisitanteNaoAutorizadoException"></exception>
         public void RegistarAdmissao(RegistoClinico doente, Visitante visitante, DateTime entrada, DateTime saida)
         {
-            bool autorizado = doente.Doente.VisitantesAutorizados.ToList().Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante));
-
-            if (!autorizado)
+            //verifica se o visitante pertence a lista de visitantes autorizados do doente
+            if (!doente.Doente.VisitantesAutorizados.ToList().Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante)))
                 throw new VisitanteNaoAutorizadoException("RNCCI.Dados.RegistosDeVisitantes.RegistarAdmissao");
 
-            RegistoDeVisitantes registoDeVisitantes = new RegistoDeVisitantes(visitante, doente, entrada, saida);
-            Add(registoDeVisitantes);
+            //cria um novo registo
+            RegistoDeVisitantes registoVisitantes = new RegistoDeVisitantes(visitante, doente, entrada, saida);
 
+            //adiciona a lista
+            Add(registoVisitantes);
         }
 
+
+        /// <summary>
+        /// tempo medio em horas das visitas por unidade
+        /// </summary>
+        /// <param name="registoDeVisitantes">registo de visitantes</param>
+        /// <param name="unidade">unidade a filtrar</param>
+        /// <returns>numero de horas</returns>
         public double TempoMedioHorasPorUnidade (List<RegistoDeVisitantes> registoDeVisitantes, UnidadeClinica unidade)
         {
-            //temos que filtrar o registo de visitantes por unidade
-            //calcular o tempo total que demorou o visitante
-            //Calcular media do tempo que demorou
-
+            //filtrar o registo de visitantes por unidade
             List<RegistoDeVisitantes> registosDeVisitantesUnidade = registoDeVisitantes.Where(r => r.UnidadeClinica.Equals(unidade)).ToList();
             List<double> duracaoVisitasHoras = new List<double>();
 
-
+            //calcular o tempo total que demorou o visitante
             foreach (RegistoDeVisitantes registo in registosDeVisitantesUnidade)
-            {
                 duracaoVisitasHoras.Add(registo.DataSaida.Subtract(registo.DataEntrada).TotalHours);
-            }
 
-            return duracaoVisitasHoras.Average();
+            //Calcular media do tempo que demorou
+            return duracaoVisitasHoras.Average();            
         }
 
-        public List<Tuple<double, Doencas>> PercentagemVisitasPorDoenca(List<RegistoDeVisitantes> registo)
+
+        /// <summary>
+        /// calculo da percetagem de visitas por doenca
+        /// </summary>
+        /// <param name="registo">lista de registo de visitantes</param>
+        /// <returns>lista de tuplos de percentagem e o tipo de doenca correspondente</returns>
+        public List<Tuple<double, Doenca>> PercentagemVisitasPorDoenca(List<RegistoDeVisitantes> registo)
         {
+            //conta o total de visitas
             int visitasTotais = registo.Count();
 
+            //agrupa por doenca
             List<List<RegistoDeVisitantes>> visitasAgrupadasDoenca = registo
                 .GroupBy(r => r.RegistoClinico.Diagnostico)
                 .Select(r => r.ToList())
                 .ToList();
 
-            List<Tuple<double,Doencas>> percentagemVisitasPorDoenca = new List<Tuple<double,Doencas>>();    
+            //cria a lista de tuplas
+            List<Tuple<double,Doenca>> percentagemVisitasDoenca = new List<Tuple<double,Doenca>>();    
             
-
+            //em cada instancia da lista, ira calcular a percentagem de cada uma das listas agrupadas, devolvendo a percetagem e o tipo de doenca correspondente
             foreach(List<RegistoDeVisitantes> registosDeDoenca in visitasAgrupadasDoenca) 
-            {
-                percentagemVisitasPorDoenca.Add(new Tuple<double, Doencas>(((registosDeDoenca.Count() * 100.0) / visitasTotais), registosDeDoenca.First().RegistoClinico.Diagnostico));
-            }
+                percentagemVisitasDoenca.Add(new Tuple<double, Doenca>(((registosDeDoenca.Count() * 100.0) / visitasTotais), registosDeDoenca.First().RegistoClinico.Diagnostico));
 
-            return percentagemVisitasPorDoenca;
-            
+            //retorna a lista de tuplos
+            return percentagemVisitasDoenca;            
         }
 
-        public int QuantidadeDeVistitasUnidade (List<RegistoDeVisitantes> registo, UnidadeClinica unidade)
-        {
-            List<RegistoDeVisitantes> registosDeVisitantesUnidade = registo.Where(r => r.UnidadeClinica.Equals(unidade)).ToList();
-            
-            return registosDeVisitantesUnidade.Count();
-        
-        }
-    
+
+        /// <summary>
+        /// quantidade de visitas por unidade
+        /// </summary>
+        /// <param name="registo">registo de visitantes</param>
+        /// <param name="unidade">unidade a filtrar</param>
+        /// <returns>numero de visitas</returns>
+        public int QuantidadeVistitasUnidade(List<RegistoDeVisitantes> registo, UnidadeClinica unidade) => registo.Where(r => r.UnidadeClinica.Equals(unidade)).ToList().Count();
     }
 }

@@ -10,14 +10,15 @@ namespace RNCCI.Dados
 {
     public class Visitantes
     {
-
+        //variaveis
         List<Visitante> visitantes = new List<Visitante>();
 
-        public Visitantes()
-        {
-            visitantes.Add(new Visitante { Nome = "Maria Figueiras", NumeroContribuinte = 4375, NumeroTelemovel = 934659324 });
+        /// <summary>
+        /// construtor
+        /// </summary>
+        public Visitantes() => visitantes.Add(new Visitante { Nome = "Maria Figueiras", NumeroContribuinte = 4375, NumeroTelemovel = 934659324 });
 
-        }
+        //metodos
 
         /// <summary>
         /// adiciona visitantes a lista
@@ -32,12 +33,14 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.Visitantes.Add");
 
             //nao pode existir
-            if (this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(novoVisitante.NumeroVisitante)))
+            if (this.visitantes.Exists(v => v.NumeroVisitante.Equals(novoVisitante.NumeroVisitante)))
                 throw new DadoJaExisteException("RNCCI.Dados.Visitantes.Add");
 
             //adiciona
             this.visitantes.Add(novoVisitante);
         }
+
+
 
         /// <summary>
         /// apaga visitantes do sistema
@@ -49,18 +52,20 @@ namespace RNCCI.Dados
         {
             //não pode ser nulo
             if (visitante is null)
-                throw new DadosNulosException("RNCCI.Dados.Visitantes.Delete");
+                throw new DadosNulosException("RNCCI.Dados.Visitantes.Apaga");
 
             //tem de existir
-            if (!this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Delete");
+            if (!this.visitantes.Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Apaga");
 
             //encontra na lista
-            int index = visitantes.FindIndex(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante));
+            int index = visitantes.FindIndex(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante));
 
             //apaga
             visitantes.RemoveAt(index);
         }
+
+
 
         /// <summary>
         /// atualiza informacoes sobre visitantes
@@ -68,18 +73,18 @@ namespace RNCCI.Dados
         /// <param name="visitante">visitante com as informacoes atualizadas</param>
         /// <exception cref="DadosNulosException">visitante e nulo</exception>
         /// <exception cref="DadoNaoExisteException">visitante nao existe no sistema</exception>
-        public void Update(Visitante visitante)
+        public void Atualiza(Visitante visitante)
         {
             //não pode ser nulo
             if (visitante is null)
-                throw new DadosNulosException("RNCCI.Dados.Visitantes.Update");
+                throw new DadosNulosException("RNCCI.Dados.Visitantes.Atualiza");
 
             //tem de existir
-            if (!this.visitantes.Exists(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante)))
-                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Update");
+            if (!this.visitantes.Exists(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante)))
+                throw new DadoNaoExisteException("RNCCI.Dados.Visitantes.Atualiza");
 
             //encontra na lista
-            int index = visitantes.FindIndex(ldm => ldm.NumeroVisitante.Equals(visitante.NumeroVisitante));
+            int index = visitantes.FindIndex(v => v.NumeroVisitante.Equals(visitante.NumeroVisitante));
 
             //atualiza a unidade
             visitantes[index] = visitante;

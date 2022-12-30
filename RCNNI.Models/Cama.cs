@@ -34,27 +34,28 @@ namespace RNCCI.Modelos
 
         public int NumeroCama { get; set; }
 
+
         /// <summary>
         /// Data e Hora do internamento do doente correspondente
         /// </summary>
         public DateTime DataInternamento { get; set; }
+
 
         /// <summary>
         /// Data e Hora da alta do doente correspondente
         /// </summary>
         public DateTime DataAlta { get; set; }
 
+
         /// <summary>
         /// Tipologia associada à cama
         /// </summary>
         public Tipologia Tipologia { get; set; }
+
         
         /// <summary>
         /// permite verificar se cama está livre ou não no sistema
         /// </summary>
-        public bool Livre { get; set; }
-
-
-       
+        public bool Livre { get; set; }       
     }
 }

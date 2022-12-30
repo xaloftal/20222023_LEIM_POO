@@ -18,7 +18,7 @@ namespace RNCCI.Modelos
         /// </summary>
         /// <param name="nome">nome da clinica</param>
         /// <param name="distrito">distrito da clinica</param>
-        public UnidadeClinica() => this.NumeroClinica = ++numeroClinica;
+        public UnidadeClinica() => this.NumeroClinica = numeroClinica++;
 
 
         //propriedades
@@ -27,26 +27,18 @@ namespace RNCCI.Modelos
         /// camas da unidade
         /// </summary>
         public Cama[] Cama { get; set; }
+
         
         /// <summary>
         /// numero de identificacao da clinica
         /// </summary>
         public int NumeroClinica { get; private set; }
 
+
         /// <summary>
         /// nome da clinica
         /// </summary>
         public string Nome { get; set; }
-
-        ///// <summary>
-        ///// regiao da unidade clinica
-        ///// </summary>
-        //public Regiao Regiao { get; private set; }
-
-        ///// <summary>
-        ///// distrito da unidade clinica
-        ///// </summary>
-        //public Distrito Distrito { get; set; }
 
 
         /// <summary>
@@ -54,17 +46,18 @@ namespace RNCCI.Modelos
         /// </summary>
         public Morada Morada { get; set; }
 
-        ///// <summary>
-        ///// regiao
-        ///// </summary>
-        //public Regiao Regiao { get; set; }
 
         /// <summary>
         /// Tipologia de resposta
         /// </summary>
         public Tipologia Tipologia { get; set; }
 
+        //metodo
 
+        /// <summary>
+        /// override ao metodo ToString()
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             int camasLivres = this.Cama.Where(c => c.Livre).Count();

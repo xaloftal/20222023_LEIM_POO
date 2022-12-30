@@ -15,7 +15,7 @@ namespace RNCCI.Modelos
         /// <summary>
         /// constructor
         /// </summary>
-        public Doente() => this.NumeroUtente += numeroUtente; //voltamos a isto
+        public Doente() => this.NumeroUtente = numeroUtente++; 
         
 
         /// <summary>
@@ -23,25 +23,32 @@ namespace RNCCI.Modelos
                 /// </summary>
         public int NumeroUtente { get; private set; }
 
+
         /// <summary>
         /// Data de nascimento do doente
         /// </summary>
         public DateOnly DataNascimento { get; set; }
+
 
         /// <summary>
         /// sexo do doente
         /// </summary>
         public Sexo Sexo { get; set; }
 
+
         /// <summary>
         ///  pessoas autorizadas a visita
         /// </summary>
         public Visitante[] VisitantesAutorizados { get; set; }
 
+
         /// <summary>
         /// Morada do doente
         /// </summary>
         public Morada Morada { get; set; }
+
+
+        //metodos
 
         /// <summary>
         /// override do ToString

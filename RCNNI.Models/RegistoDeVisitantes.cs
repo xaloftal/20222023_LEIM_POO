@@ -25,11 +25,7 @@ namespace RNCCI.Modelos
 
         }
 
-        public RegistoDeVisitantes()
-        {
-            this.NumeroRV += numeroRV;
-
-        }
+        public RegistoDeVisitantes() => this.NumeroRV = numeroRV++;
 
         //propriedades
 
@@ -38,16 +34,21 @@ namespace RNCCI.Modelos
         /// </summary>
         public int NumeroRV { get; private set; }
 
+
         /// <summary>
         ///Doente referente
         /// </summary>
         public RegistoClinico RegistoClinico { get; set; }
+
 
         /// <summary>
         /// Visitante
         /// </summary>
         public Visitante Visitante { get; set; }
 
+        /// <summary>
+        /// unidade clinica que entrou 
+        /// </summary>
         public UnidadeClinica UnidadeClinica { get; set; }
 
         /// <summary>
@@ -58,9 +59,22 @@ namespace RNCCI.Modelos
         /// <summary>
         /// Data e hora de saida
         /// </summary>
-        public DateTime DataSaida { get; set; } 
+        public DateTime DataSaida { get; set; }
 
-        // OVERRIDE DO TOSTRING()
+
+        //metodo
+
+        /// <summary>
+        /// override do metodo ToString();
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $"\tRegisto Visitante n {this.NumeroRV}\n" +
+            $"unidade Clinica: {this.UnidadeClinica.Nome}, {this.UnidadeClinica.Morada.Distrito}\n\n" +
+            $"Doente Visitado: {this.RegistoClinico.Doente.Nome} (n utente: {this.RegistoClinico.Doente.NumeroUtente})\n" +
+            $"Visitante: {this.Visitante.Nome} (n visitante: {this.Visitante.NumeroVisitante})\n\n" +
+            $"Data e Hora de entrada: {this.DataEntrada}\n" +
+            $"Data e Hora de saida: {this.DataSaida}\n\n\n";
         
+
     }
 }
