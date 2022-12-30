@@ -19,7 +19,7 @@ namespace RNCCI.Modelos
         {
             this.NumeroRV += numeroRV;
             this.Visitante = visitante;
-            this.Doente = registoClinico.Doente;
+            this.RegistoClinico = registoClinico;
             this.DataEntrada = entrada;
             this.DataSaida = saida;
 
@@ -41,7 +41,7 @@ namespace RNCCI.Modelos
         /// <summary>
         ///Doente referente
         /// </summary>
-        public Doente Doente { get; set; }
+        public RegistoClinico RegistoClinico { get; set; }
 
         /// <summary>
         /// Visitante

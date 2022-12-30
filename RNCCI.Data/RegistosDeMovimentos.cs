@@ -14,7 +14,12 @@ namespace RNCCI.Dados
         //variaveis
         List<RegistoDeMovimento> registosMovimentos = new List<RegistoDeMovimento>();
 
-
+        /// <summary>
+        /// adiciona um registo de movimento
+        /// </summary>
+        /// <param name="novoRegisto">registo de movimento a adicionar</param>
+        /// <exception cref="DadosNulosException">novoRegisto e nulo</exception>
+        /// <exception cref="DadoJaExisteException">registo de movimento ja existe</exception>
         public void Add(RegistoDeMovimento novoRegisto)
         {
             //não pode ser nulo
@@ -29,6 +34,12 @@ namespace RNCCI.Dados
             this.registosMovimentos.Add(novoRegisto);
         }
 
+        /// <summary>
+        ///  elimina um registo de movimento do sistema
+        /// </summary>
+        /// <param name="registoMovimento">registo de movimento a eliminar</param>
+        /// <exception cref="DadosNulosException">registoMovimento e nulo</exception>
+        /// <exception cref="DadoNaoExisteException">registo de movimento nao existe</exception>
         public void Apaga(RegistoDeMovimento registoMovimento)
         {
             //não pode ser nulo
@@ -46,6 +57,12 @@ namespace RNCCI.Dados
             registosMovimentos.RemoveAt(index);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="registoMovimento"></param>
+        /// <exception cref="DadosNulosException"></exception>
+        /// <exception cref="DadoNaoExisteException"></exception>
         public void Atualiza(RegistoDeMovimento registoMovimento)
         {
             //não pode ser nulo
