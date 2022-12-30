@@ -189,7 +189,8 @@ namespace RNCCI.Dados
             
             //em cada instancia da lista, ira calcular a percentagem de cada uma das listas agrupadas, devolvendo a percetagem e o tipo de doenca correspondente
             foreach(List<RegistoDeVisitantes> registosDeDoenca in visitasAgrupadasDoenca) 
-                percentagemVisitasDoenca.Add(new Tuple<double, Doenca>(((registosDeDoenca.Count() * 100.0) / visitasTotais), registosDeDoenca.First().RegistoClinico.Diagnostico));
+                percentagemVisitasDoenca.Add(new Tuple<double, Doenca>(((registosDeDoenca.Count() * 100.0) / visitasTotais),
+                    registosDeDoenca.First().RegistoClinico.Diagnostico));
 
             //retorna a lista de tuplos
             return percentagemVisitasDoenca;            
@@ -202,6 +203,9 @@ namespace RNCCI.Dados
         /// <param name="registo">registo de visitantes</param>
         /// <param name="unidade">unidade a filtrar</param>
         /// <returns>numero de visitas</returns>
-        public int QuantidadeVistitasUnidade(List<RegistoDeVisitantes> registo, UnidadeClinica unidade) => registo.Where(r => r.UnidadeClinica.Equals(unidade)).ToList().Count();
+        public int QuantidadeVistitasUnidade(List<RegistoDeVisitantes> registo, UnidadeClinica unidade) => registo
+            .Where(r => r.UnidadeClinica.Equals(unidade))
+            .ToList()
+            .Count();
     }
 }

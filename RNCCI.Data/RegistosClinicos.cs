@@ -248,7 +248,8 @@ namespace RNCCI.Dados
             }
 
             //inserir no registo de movimentos
-            this.registosDeMovimentos.Add(new RegistoDeMovimento { TipoMovimento = Movimento.Entrada, DataMovimento = transferencia, Doente = registoClinico.Doente, Destino = unidadeDestino, Origem = unidadeOrigem });
+            this.registosDeMovimentos.Add(new RegistoDeMovimento { TipoMovimento = Movimento.Entrada, DataMovimento = transferencia,
+                Doente = registoClinico.Doente, Destino = unidadeDestino, Origem = unidadeOrigem });
         }
 
     }

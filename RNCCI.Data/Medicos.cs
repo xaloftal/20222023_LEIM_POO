@@ -100,7 +100,7 @@ namespace RNCCI.Dados
         /// lista todos os medicos do sistema
         /// </summary>
         /// <param name="medicos">medicos do sistema</param>
-        public void ListarTodosOsMedicos(List<Medico> medicos)
+        public void ImprimeMedicos(List<Medico> medicos)
         {
             foreach (Medico medico in medicos)
                 Console.WriteLine(medicos.ToString());
@@ -121,7 +121,7 @@ namespace RNCCI.Dados
                 case Doenca.Pneumonia:
                 case Doenca.Anemia:
                     return Tipologia.UnidadeDeCovalescenca;
-
+                    
                 case Doenca.Zika:
                 case Doenca.HIV:
                 case Doenca.Cancro:

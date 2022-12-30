@@ -53,11 +53,11 @@ namespace RNCCI.Dados
                 throw new DadosNulosException("RNCCI.Dados.RegistosDeMovimentos.Apaga");
 
             //tem de existir
-            if (!this.registosMovimentos.Exists(m => m.NumeroRegisto.Equals(registoMovimento.NumeroRegisto)))
+            if (!this.registosMovimentos.Exists(rm => rm.NumeroRegisto.Equals(registoMovimento.NumeroRegisto)))
                 throw new DadoNaoExisteException("RNCCI.Dados.RegistosDeMovimentos.Apaga");
 
             //encontra na lista
-            int index = registosMovimentos.FindIndex(m => m.NumeroRegisto.Equals(registoMovimento.NumeroRegisto));
+            int index = registosMovimentos.FindIndex(rm => rm.NumeroRegisto.Equals(registoMovimento.NumeroRegisto));
 
             //apaga
             registosMovimentos.RemoveAt(index);

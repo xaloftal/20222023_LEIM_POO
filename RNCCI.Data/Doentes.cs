@@ -94,17 +94,5 @@ namespace RNCCI.Dados
             //atualiza a unidade
             doentes[index] = doente;
         }
-
-
-
-        /// <summary>
-        /// lista na consola todos os doentes registados no sistema
-        /// </summary>
-        /// <param name="doentes"></param>
-        public void ListarTodosDoentes(List<Doente> doentes)
-        {
-            foreach (Doente doente in doentes)
-                Console.WriteLine(doentes.ToString());
-        }
     }
 }

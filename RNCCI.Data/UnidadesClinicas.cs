@@ -106,7 +106,7 @@ namespace RNCCI.Dados
         /// Lista unidades clinicas na consola
         /// </summary>
         /// <param name="unidadesC">lista de unidades a imprimir</param>
-        public void ImprimeUnidadesClínicas(List<UnidadeClinica> unidadesC)
+        public void ImprimeUnidadesClinicas(List<UnidadeClinica> unidadesC)
         {
             foreach (UnidadeClinica unidadeC in unidadesC)
                 Console.WriteLine(unidadesC.ToString());
@@ -119,7 +119,10 @@ namespace RNCCI.Dados
         /// <param name="registo">lista de registos de doentes</param>
         /// <param name="estado">estado a filtrar</param>
         /// <returns>lista de doentes em estado estado</returns>
-        public List<Doente> ListaDoenteEstado(List<RegistoClinico> registo, EstadoClinico estado) => registo.Where(r => r.EstadoClinico.Equals(estado)).Select(r => r.Doente).ToList();
+        public List<Doente> ListaDoenteEstado(List<RegistoClinico> registo, EstadoClinico estado) => registo
+            .Where(r => r.EstadoClinico.Equals(estado))
+            .Select(r => r.Doente)
+            .ToList();
 
 
 
@@ -129,7 +132,10 @@ namespace RNCCI.Dados
         /// <param name="registosClinicos">registos clinicos dos doentes</param>
         /// <param name="unidadeFiltrada">tipologia de resposta a filtrar</param>
         /// <returns>lista de doentes na tipologia unidadeFiltrada</returns>
-        public List<Doente> ListaTodosDoentesTipologia(List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada) => registosClinicos.Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada)).Select(r => r.Doente).ToList();
+        public List<Doente> ListaTodosDoentesTipologia(List<RegistoClinico> registosClinicos, Tipologia unidadeFiltrada) => registosClinicos
+            .Where(r => r.UnidadeClinica.Tipologia.Equals(unidadeFiltrada))
+            .Select(r => r.Doente)
+            .ToList();
 
 
 
@@ -141,8 +147,7 @@ namespace RNCCI.Dados
         {
             List<Doente> doentes = this.ListaDoenteEstado(registo, EstadoClinico.EmEspera);
 
-            foreach (Doente doente in doentes)
-                Console.WriteLine(doentes.ToString());
+            ImprimeDoentes(doentes);
         }
 
 
@@ -157,6 +162,8 @@ namespace RNCCI.Dados
             List<Doente> doentes = this.ListaTodosDoentesTipologia(registosClinicos,unidadeFiltrada);
 
             //lista os doentes
+            ImprimeDoentes(doentes);
+
             foreach(Doente doente in doentes)
                 Console.WriteLine(doentes.ToString());
 
@@ -171,11 +178,20 @@ namespace RNCCI.Dados
                 .ToList();
 
             //imprime na consola. no ToString() de unidadeClinica tem as camas disponiveis
-            foreach(UnidadeClinica unidadeClinica in unidadesClinicasAgrupadasNumero)
-                Console.WriteLine(unidadeClinica.ToString());
+            ImprimeUnidadesClinicas(unidadesClinicasAgrupadasNumero);
         }
 
 
+
+        /// <summary>
+        /// lista na consola todos os doentes registados no sistema
+        /// </summary>
+        /// <param name="doentes"></param>
+        public void ImprimeDoentes(List<Doente> doentes)
+        {
+            foreach (Doente doente in doentes)
+                Console.WriteLine(doentes.ToString());
+        }
 
         /// <summary>
         /// metodo para escolher a unidade de internamento para o doente
@@ -267,7 +283,7 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="unidades">lista de unidades</param>
         /// <param name="distrito">distrito a listar</param>
-        public void ListarUnidadesDistrito(List<UnidadeClinica> unidades, Distrito distrito)
+        public void RelatorioUnidadesDistrito(List<UnidadeClinica> unidades, Distrito distrito)
         {
             //vai buscar a lista das unidades por distrito
             List<UnidadeClinica> unidadesDistrito = UnidadesDistrito(unidades, distrito);
@@ -292,7 +308,7 @@ namespace RNCCI.Dados
         /// </summary>
         /// <param name="unidades">lista de unidades</param>
         /// <param name="regiao">regiao a filtrar</param>
-        public void ListarUnidadesRegiao(List<UnidadeClinica> unidades, Regiao regiao)
+        public void RelatorioUnidadesRegiao(List<UnidadeClinica> unidades, Regiao regiao)
         {
             //busca a lista das unidades da regiao
             List<UnidadeClinica> unidadesRegiao = UnidadesRegiao(unidades, regiao);
